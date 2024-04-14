@@ -1,25 +1,56 @@
-const htmlCode = document.querySelector('.html-code textarea');
-const cssCode = document.querySelector('.css-code textarea');
-const jsCode = document.querySelector('.js-code textarea');
-const result = document.querySelector('#result');
+let html_div = document.querySelector("#editor");
+let css_div = document.querySelector("#editor2");
+let js_div = document.querySelector("#editor3");
+const result_sc = document.querySelector('#white-div');
 
-function run() {
-    // Storing data in Local Storage
-    localStorage.setItem('htmlCode', htmlCode.value);
-    localStorage.setItem('cssCode', cssCode.value);
-    localStorage.setItem('jsCode', jsCode.value);
+// Initialize Ace editors
+ace.edit(css_div, {
+  theme: "ace/theme/tomorrow_night",
+  mode: "ace/mode/css",
+});
 
-    // Executing HTML, CSS & JS code
-    result.contentDocument.body.innerHTML = `<style>${localStorage.cssCode}</style>` + localStorage.htmlCode;
-    result.contentWindow.eval(localStorage.jsCode);
+ace.edit(html_div, {
+  theme: "ace/theme/tomorrow_night",
+  mode: "ace/mode/html",
+});
+
+ace.edit(js_div, {
+  theme: "ace/theme/tomorrow_night",
+  mode: "ace/mode/javascript",
+});
+
+// Function to run code
+async function run() {
+  // Storing data in Local Storage
+  localStorage.setItem('htmlCode', ace.edit(html_div).getValue());
+  localStorage.setItem('cssCode', ace.edit(css_div).getValue());
+  localStorage.setItem('jsCode', ace.edit(js_div).getValue());
+
+  // Executing HTML, CSS & JS code
+  result_sc.srcdoc = `
+    <style>${localStorage.getItem('cssCode')}</style>
+    ${localStorage.getItem('htmlCode')}
+    <script>${localStorage.getItem('jsCode')}</script>
+  `;
+  // console.log(result_sc.innerHTML);
 }
 
-// Checking if user is typing anything in input field
-htmlCode.onkeyup = () => run();
-cssCode.onkeyup = () => run();
-jsCode.onkeyup = () => run();
+// Event listeners for input fields
+html_div.addEventListener('keyup', run);
+css_div.addEventListener('keyup', run);
+js_div.addEventListener('keyup', run);
 
-// Accessing data stored in Local Storage. To make it more advanced you could check if there is any data stored in Local Storage.
-htmlCode.value = localStorage.htmlCode;
-cssCode.value = localStorage.cssCode;
-jsCode.value = localStorage.jsCode;
+
+// Check if data is stored in Local Storage and populate the editors
+if(localStorage.getItem('htmlCode'))
+  ace.edit(html_div).setValue(localStorage.getItem('htmlCode'));
+
+if(localStorage.getItem('cssCode'))
+  ace.edit(css_div).setValue(localStorage.getItem('cssCode'));
+
+if(localStorage.getItem('jsCode')) 
+  ace.edit(js_div).setValue(localStorage.getItem('jsCode'));
+
+
+// Initialize code execution
+run();

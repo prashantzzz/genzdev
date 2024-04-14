@@ -6,7 +6,7 @@
 
     ::-webkit-scrollbar {
         height: 10px;
-        width: .4rem;
+        width: 0.4rem;
     }
 
     ::-webkit-scrollbar-track {
@@ -27,95 +27,83 @@
 
 * {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     height: 100vh;
     font-family: 'Poppins', sans-serif;
     background-image: linear-gradient(45deg, var(--dark), var(--pink));
-    display: flex;
-    flex-direction: column; /* Ensure the footer stays below all other elements */
-    align-items: center;
+    display: flex; /* Added to make children flex items */
+    align-items: stretch;
+    /* Added to stretch children to equal height */
 }
 
-.code-editor {
-    width: 97vw;
-    height: 85vh; /* Reduce height for demonstration */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    background-color: #fff;
+.editor-container {
+    height: 10.5rem;
+    width: 50%;
+    color: white;
+    font-size: 15px;
+    margin-left: 10px;
     border-radius: 0.5rem;
-    overflow: hidden;
-    margin-bottom: 10px; /* Adjust margin-bottom to create space between code-editor and footer */
-    margin-top: 10px; /* Adjust margin-bottom to create space between code-editor and footer */
 }
 
-.code {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    overflow-y: auto;
-    background-color: var(--dark-grey);
-    padding: 0.8rem;
+#white-div {
+    height: 37.5rem;
+    width: 50%;
+    border:none;
+    margin: 9px;
+    padding: 5px;
     border-radius: 0.5rem;
+    background-color: var(--white);
+}
+
+#editor,
+#editor2,
+#editor3 {
+    height: inherit;
+    width: 100%;
+    font-size: 15px;
+    color: white;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
 }
 
 h1 {
-    font: 600 1.2rem sans-serif;
-    margin: 0.5rem 0.5rem;
+    padding: 6px;
+    padding-inline:10px;
+    margin-top: 0.5rem;
+    font: 600 1rem sans-serif;
+    color: #ffe3ee;
+    background-color: #25282C;
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+}
+
+h2 {
+    padding: 15px;
     color: #ffe3ee;
 }
 
-h1>img {
-    width: 1.3rem;
-    margin-right: 1rem;
-    vertical-align: middle;
-}
-
-.code textarea {
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    height: calc(100% - 4rem);
-    padding:0.5rem;
-    background-color: var(--dark);
-    color: #a6feff;
-    border: none;
-    border-radius: 0.2rem;
-    font-size: 1rem;
-    resize: vertical;
-}
-
-#result {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-a {
-    background-color: lime;
-    color: #fff;
-    padding: 0 1.2rem;
-    border-radius: .5rem;
-    text-decoration: none;
-    font-size: 2rem;
-    float: right;
-    cursor: pointer;
-}
-
 .bottom {
-    background-color: var(--dark-grey);
-    width: 97vw;
+    position: absolute;
+    bottom: 10px;
+    /* Adjusted position to have a bit of margin from the bottom */
+    left: 10px;
+    /* Adjusted position to have a bit of margin from the left */
     height: 10vh;
-    display: flex; /* Use flexbox */
-    align-items: center; /* Vertically align items to center */
-    justify-content: center; /* Horizontally align items to center */
+    width: 97vw;
     border-radius: 0.5rem;
-    
-    /* text-align: center; Center the content horizontally */
+    background-color: var(--dark-grey);
+    display: flex;
+    margin-top:5px;
+    align-items: center;
+    /* Vertically align items to center */
+    justify-content: center;
+    /* Horizontally align items to center */
 }
 
-.bottom h1{
+
+.bottom h1 {
     margin-left: 1rem;
     margin-right: 1rem;
 }
@@ -123,20 +111,19 @@ a {
 .bottom textarea {
     font-family: 'Poppins', sans-serif;
     width: 100%;
-    height:70%;
-    padding:0.4rem;
+    height: 70%;
     background-color: var(--dark);
-    color: #a6feff;
+    color: #d4feff;
     border: none;
     border-radius: 0.4rem;
     font-size: 20px;
     resize: none;
 }
 
-button{
-    margin-inline:1rem;
-    margin-left:0.2rem;
-    margin-right:0.5rem;
+button {
+    margin-inline: 1rem;
+    margin-left: 0.2rem;
+    margin-right: 0.5rem;
     border-radius: 0.4rem;
 }
 
@@ -146,12 +133,12 @@ button{
     border: 1px solid #18181a;
     color: #ffffff;
     display: inline-block;
-    font-size: 16px; 
-    padding: 16px; 
-    padding-right:19px; 
+    font-size: 18px;
+    padding: 16px;
+    padding-right: 19px;
     text-decoration: none;
     cursor: pointer;
-    background: var(--dark);
+    background: var(--dark-grey);
     -webkit-user-select: none;
     user-select: none;
     touch-action: manipulation;
