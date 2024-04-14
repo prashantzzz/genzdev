@@ -85,23 +85,19 @@ h2 {
 }
 
 .bottom {
-    position: absolute;
+    position: fixed; /*Change to fixed position*/
     bottom: 10px;
-    /* Adjusted position to have a bit of margin from the bottom */
-    left: 10px;
-    /* Adjusted position to have a bit of margin from the left */
+    left: 50%;     /*Place it horizontally centered*/
+    transform: translateX(-50%); /*Center horizontally*/
     height: 10vh;
     width: 97vw;
     border-radius: 0.5rem;
     background-color: var(--dark-grey);
     display: flex;
-    margin-top:5px;
+    margin-top: 5px;
     align-items: center;
-    /* Vertically align items to center */
     justify-content: center;
-    /* Horizontally align items to center */
 }
-
 
 .bottom h1 {
     margin-left: 1rem;
@@ -110,7 +106,7 @@ h2 {
 
 .bottom textarea {
     font-family: 'Poppins', sans-serif;
-    width: 100%;
+    width: calc(100% - 80px); /* Adjust width to fit the button */
     height: 70%;
     background-color: var(--dark);
     color: #d4feff;
