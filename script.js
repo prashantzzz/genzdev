@@ -2,6 +2,7 @@ let html_div = document.querySelector("#editor");
 let css_div = document.querySelector("#editor2");
 let js_div = document.querySelector("#editor3");
 const result_sc = document.querySelector('#white-div');
+let debounceTimer;
 
 // Initialize Ace editors
 ace.edit(css_div, {
@@ -21,25 +22,26 @@ ace.edit(js_div, {
 
 // Function to run code
 async function run() {
-  // Storing data in Local Storage
-  localStorage.setItem('htmlCode', ace.edit(html_div).getValue());
-  localStorage.setItem('cssCode', ace.edit(css_div).getValue());
-  localStorage.setItem('jsCode', ace.edit(js_div).getValue());
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    // Storing data in Local Storage
+    localStorage.setItem('htmlCode', ace.edit(html_div).getValue());
+    localStorage.setItem('cssCode', ace.edit(css_div).getValue());
+    localStorage.setItem('jsCode', ace.edit(js_div).getValue());
 
-  // Executing HTML, CSS & JS code
-  result_sc.srcdoc = `
-    <style>${localStorage.getItem('cssCode')}</style>
-    ${localStorage.getItem('htmlCode')}
-    <script>${localStorage.getItem('jsCode')}</script>
-  `;
-  // console.log(result_sc.innerHTML);
+    // Executing HTML, CSS & JS code
+    result_sc.srcdoc = `
+      <style>${localStorage.getItem('cssCode')}</style>
+      ${localStorage.getItem('htmlCode')}
+      <script>${localStorage.getItem('jsCode')}</script>
+    `;
+  }, 600); // Adjust the delay time as needed (in milliseconds)
 }
 
 // Event listeners for input fields
 html_div.addEventListener('keyup', run);
 css_div.addEventListener('keyup', run);
 js_div.addEventListener('keyup', run);
-
 
 // Check if data is stored in Local Storage and populate the editors
 if(localStorage.getItem('htmlCode'))
@@ -50,7 +52,6 @@ if(localStorage.getItem('cssCode'))
 
 if(localStorage.getItem('jsCode')) 
   ace.edit(js_div).setValue(localStorage.getItem('jsCode'));
-
 
 // Initialize code execution
 run();
