@@ -31,12 +31,12 @@ function toggleEditorContainer() {
       editorContainer.style.display = 'block';
       leftIcon.style.display = 'block';
       rightIcon.style.display = 'none';
-      whitediv.style.width = '100%';
+      whitediv.style.width = '100vw';
   } else {
       editorContainer.style.display = 'none';
       leftIcon.style.display = 'none';
       rightIcon.style.display = 'block';
-      whitediv.style.width = '50%';
+      whitediv.style.width = '50vw';
   }
 }
 
