@@ -24,6 +24,8 @@ function toggleEditorContainer() {
   const editorContainer = document.querySelector('.editor-container');
   const leftIcon = document.getElementById('leftIcon');
   const rightIcon = document.getElementById('rightIcon');
+  
+  const rightIcon = document.getElementById('whitediv');
 
   if (editorContainer.style.display === 'none') {
       editorContainer.style.display = 'block';
