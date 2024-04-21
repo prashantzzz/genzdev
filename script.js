@@ -25,18 +25,18 @@ function toggleEditorContainer() {
   const leftIcon = document.getElementById('leftIcon');
   const rightIcon = document.getElementById('rightIcon');
   
-  const whitediv = document.getElementById('whitediv');
+  const whitediv = document.getElementById('white-div');
 
   if (editorContainer.style.display === 'none') {
       editorContainer.style.display = 'block';
       leftIcon.style.display = 'block';
       rightIcon.style.display = 'none';
-      whitediv.style.width = '100vw';
+      whitediv.style.width = '50vw';
   } else {
       editorContainer.style.display = 'none';
       leftIcon.style.display = 'none';
       rightIcon.style.display = 'block';
-      whitediv.style.width = '50vw';
+      whitediv.style.width = '100vw';
   }
 }
 
