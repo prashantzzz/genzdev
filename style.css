@@ -39,8 +39,9 @@ body {
 }
 
 .editor-container {
+    visibility: none;
     height: 10.5rem;
-    width: 50%;
+    width: 50%; 
     color: white;
     font-size: 15px;
     margin-left: 10px;
@@ -49,9 +50,10 @@ body {
 
 #white-div {
     height: 37.5rem;
-    width: 50%;
+    width: 100%; 
     border:none;
     margin: 9px;
+    margin-left: 3px; /*due to button*/ 
     padding: 5px;
     border-radius: 0.5rem;
     background-color: var(--white);
@@ -107,26 +109,51 @@ h2 {
 .bottom textarea {
     font-family: 'Poppins', sans-serif;
     width: calc(100% - 80px); /* Adjust width to fit the button */
-    height: 70%;
-    background-color: var(--dark);
-    color: #d4feff;
-    border: none;
+    height: 55%;
+    background-color: var(--dark-grey);
+    color: #d0d0d0;
+    padding:8px; 
+    outline: none;
     border-radius: 0.4rem;
     font-size: 20px;
     resize: none;
 }
 
-button {
+.separator {
+    padding-right: 11px;
+    padding-left: 4px;
+    margin-left: 0.2rem;
+    height: 40px;
+    width: 10px;
+    margin-top: calc(40% - 20px);
+    background-color: rgba(106, 106, 106, 0.4);
+    border: none; 
+    border-radius:2px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.4s, transform 0.4s;
+    transition: color 0.4s, transform 0.4s;
+    color: #fff; /* Text color */
+}
+.separator:hover,
+.separator:focus {
+    color:black; /* Text color */
+    background-color: rgba(189, 189, 189, 0.8); /* Darker background color on hover and focus */
+}
+ 
+.separator:active {  
+    transform: scale(0.92);
+}
+
+
+.button-57 {
     margin-inline: 1rem;
     margin-left: 0.2rem;
     margin-right: 0.5rem;
     border-radius: 0.4rem;
-}
-
-.button-57 {
     position: relative;
     overflow: hidden;
-    border: 1px solid #18181a;
+    border: 1px solid #575757;
     color: #ffffff;
     display: inline-block;
     font-size: 18px;

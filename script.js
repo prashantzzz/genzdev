@@ -20,6 +20,23 @@ ace.edit(js_div, {
   mode: "ace/mode/javascript",
 });
 
+function toggleEditorContainer() {
+  const editorContainer = document.querySelector('.editor-container');
+  const leftIcon = document.getElementById('leftIcon');
+  const rightIcon = document.getElementById('rightIcon');
+
+  if (editorContainer.style.display === 'none') {
+      editorContainer.style.display = 'block';
+      leftIcon.style.display = 'block';
+      rightIcon.style.display = 'none';
+  } else {
+      editorContainer.style.display = 'none';
+      leftIcon.style.display = 'none';
+      rightIcon.style.display = 'block';
+  }
+}
+
+
 // Function to run code
 async function run() {
   clearTimeout(debounceTimer);
@@ -35,7 +52,7 @@ async function run() {
       ${localStorage.getItem('htmlCode')}
       <script>${localStorage.getItem('jsCode')}</script>
     `;
-  }, 600); // Adjust the delay time as needed (in milliseconds)
+  }, 500); // Adjust the delay time as needed (in milliseconds)
 }
 
 // Event listeners for input fields
