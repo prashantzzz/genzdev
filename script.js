@@ -25,19 +25,20 @@ function toggleEditorContainer() {
   const leftIcon = document.getElementById('leftIcon');
   const rightIcon = document.getElementById('rightIcon');
   
-  const rightIcon = document.getElementById('whitediv');
+  const whitediv = document.getElementById('whitediv');
 
   if (editorContainer.style.display === 'none') {
       editorContainer.style.display = 'block';
       leftIcon.style.display = 'block';
       rightIcon.style.display = 'none';
+      whitediv.style.width = '100%';
   } else {
       editorContainer.style.display = 'none';
       leftIcon.style.display = 'none';
       rightIcon.style.display = 'block';
+      whitediv.style.width = '50%';
   }
 }
-
 
 // Function to run code
 async function run() {
