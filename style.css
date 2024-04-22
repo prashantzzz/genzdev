@@ -2,7 +2,6 @@
     --dark-grey: #282828;
     --dark: #373737;
     --white: #ffffff;
-    --pink: #ff2871;
 
     ::-webkit-scrollbar {
         height: 10px;
@@ -40,7 +39,7 @@ body {
 
 .editor-container {
     visibility: none;
-    height: 10.5rem;
+    height: 11.3rem;
     width: 50%; 
     color: white;
     font-size: 15px;
@@ -49,7 +48,7 @@ body {
 }
 
 #white-div {
-    height: 37.5rem;
+    height: 40rem;
     width: 50vw;
     border:none;
     margin: 9px;
@@ -87,11 +86,12 @@ h2 {
 }
 
 .bottom {
+    font-size: 15px;
     position: fixed; /*Change to fixed position*/
     bottom: 10px;
     left: 50%;     /*Place it horizontally centered*/
     transform: translateX(-50%); /*Center horizontally*/
-    height: 10vh;
+    height: 8vh;
     width: 97vw;
     border-radius: 0.5rem;
     background-color: var(--dark-grey);
@@ -99,6 +99,7 @@ h2 {
     margin-top: 5px;
     align-items: center;
     justify-content: center;
+    z-index: 9999; /* Ensure it's above other elements */
 }
 
 .bottom h1 {
@@ -109,10 +110,10 @@ h2 {
 .bottom textarea {
     font-family: 'Poppins', sans-serif;
     width: calc(100% - 80px); /* Adjust width to fit the button */
-    height: 55%;
+    height: 50%;
     background-color: var(--dark-grey);
     color: #d0d0d0;
-    padding:8px; 
+    padding:8px;
     outline: none;
     border-radius: 0.4rem;
     font-size: 20px;
@@ -151,16 +152,16 @@ h2 {
 
 .button-57 {
     margin-inline: 1rem;
-    margin-left: 0.2rem;
+    margin-left: 0.3rem;
     margin-right: 0.5rem;
     border-radius: 0.4rem;
     position: relative;
     overflow: hidden;
-    border: 1px solid #575757;
+    border: 1px solid #727272;
     color: #ffffff;
     display: inline-block;
     font-size: 18px;
-    padding: 16px;
+    padding: 14px;
     padding-right: 19px;
     text-decoration: none;
     cursor: pointer;
