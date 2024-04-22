@@ -33,12 +33,110 @@
   
   <div class="bottom"> <!--added footer at the bottom-->
     <h2><i class="fa-solid fa-wand-magic-sparkles"></i> </h2>
-    <textarea></textarea>
+    <textarea id="text-input"></textarea>
 
-    <button class="button-57" role="button" onclick=""><span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span></button>
+    <button class="button-57" role="button"><span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span></button>
 
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
+<script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+<script type="module"> 
+
+  import { GoogleGenerativeAI } from "@google/generative-ai";
+  const API_KEY = "AIzaSyDkOS4Xjuy3F3xYdV_nXnsEU_HEhxZPmgw";
+  const genAI = new GoogleGenerativeAI(API_KEY);
+
+  const inputElement = document.getElementById('text-input');
+  // Add event listener for enter event
+  inputElement.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+      send_req();
+    }
+  });
+
+  function filleditors(text) {
+  try {
+    const codeObj = JSON.parse(text);
+    const htmlCode = codeObj.index_html || '';
+    const cssCode = codeObj.style_css || '';
+    const jsCode = codeObj.script_js || '';
+
+    // Set HTML code
+    const htmlEditor = ace.edit(document.querySelector("#editor"));
+    htmlEditor.session.setValue(htmlCode.trim());
+
+    // Set CSS code
+    const cssEditor = ace.edit(document.querySelector("#editor2"));
+    cssEditor.session.setValue(cssCode.trim());
+
+    // Set JS code
+    const jsEditor = ace.edit(document.querySelector("#editor3"));
+    jsEditor.session.setValue(jsCode.trim());
+
+    // Resize editors for better visibility
+    htmlEditor.resize();
+    cssEditor.resize();
+    jsEditor.resize();
+
+    // Optionally, run the code
+    run();
+  } catch (error) {
+    console.error(error);
+    document.getElementById("white-div").textContent = `Error: Failed to fill editors with code.`;
+  }
+}
+
+
+
+  async function send_req() {
+  let html_div = document.querySelector("#editor");
+  let css_div = document.querySelector("#editor2");
+  let js_div = document.querySelector("#editor3");
+  
+  let userInput = inputElement.value;
+  const prompt = `For your reference, this is the previous code:
+index.html:"\n${ace.edit(html_div).getValue()}"
+\nstyle.css:"\n${ace.edit(css_div).getValue()}"
+\nscript.js:"\n${ace.edit(js_div).getValue()}"  
+
+Now the user has asked: "${userInput}"
+
+Note1: Answer only if the user asked a web development related query. The answer should be in the following JSON format:
+{
+  index_html:\`\`,
+  style_css:\`\`,
+  script_js:\`\`,
+  Comments:\`\`,
+}
+
+Note 2: Answer by giving the full HTML, CSS, and JS code if code is required. Don't write 'same' when the same code is to be kept, instead, give the entire HTML, CSS, JS code every time. If code is not required, just add your answer in the comments variable.
+`;
+
+  console.log(prompt);
+  
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    console.log("loading"); 
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    let text = await response.text();
+    console.log(text); 
+    console.log("loaded");
+    filleditors(text); 
+  } catch (error){
+    document.getElementById("white-div").textContent = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the symptoms`;
+  }
+}
+
+  document.querySelector("button-57").addEventListener("click", send_req);
+</script>

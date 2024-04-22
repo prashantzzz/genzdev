@@ -74,7 +74,7 @@ h1 {
     padding-inline:10px;
     margin-top: 0.5rem;
     font: 600 1rem sans-serif;
-    color: #ffe3ee;
+    color: #ffffff;
     background-color: #25282C;
     border-top-right-radius: inherit;
     border-top-left-radius: inherit;
@@ -82,7 +82,7 @@ h1 {
 
 h2 {
     padding: 15px;
-    color: #ffe3ee;
+    color: #ffffff;
 }
 
 .bottom {
@@ -144,7 +144,7 @@ h2 {
     color:black; /* Text color */
     background-color: rgba(189, 189, 189, 0.8); /* Darker background color on hover and focus */
 }
- 
+
 .separator:active {  
     transform: scale(0.92);
 }
