@@ -7,7 +7,7 @@
   <title>GenZDev</title>
   <link rel="icon" href="images/logo.png" type="image/x-icon">
   <script src="https://kit.fontawesome.com/163f146714.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style1.css" />
 </head> 
 
 <body>
@@ -39,7 +39,7 @@
 
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
-  <script src="script.js"></script>
+  <script src="script1.js"></script>
 </body>
 </html>
 
@@ -65,37 +65,27 @@
   });
 
   function filleditors(text) {
-  try {
-    const codeObj = JSON.parse(text);
-    const htmlCode = codeObj.index_html || '';
-    const cssCode = codeObj.style_css || '';
-    const jsCode = codeObj.script_js || '';
+    try {
+      const codeObj = JSON.parse(text);
+      const html_Code = codeObj.index_html || '';
+      const css_Code = codeObj.style_css || '';
+      const js_Code = codeObj.script_js || '';
 
-    // Set HTML code
-    const htmlEditor = ace.edit(document.querySelector("#editor"));
-    htmlEditor.session.setValue(htmlCode.trim());
+      // Set HTML code
+      const htmlEditor = ace.edit(document.querySelector("#editor"));
+      htmlEditor.setValue(html_Code, 1); // 1: move cursor to start
 
-    // Set CSS code
-    const cssEditor = ace.edit(document.querySelector("#editor2"));
-    cssEditor.session.setValue(cssCode.trim());
+      // Set CSS code
+      const cssEditor = ace.edit(document.querySelector("#editor2"));
+      cssEditor.setValue(css_Code, 1);
 
-    // Set JS code
-    const jsEditor = ace.edit(document.querySelector("#editor3"));
-    jsEditor.session.setValue(jsCode.trim());
-
-    // Resize editors for better visibility
-    htmlEditor.resize();
-    cssEditor.resize();
-    jsEditor.resize();
-
-    // Optionally, run the code
-    run();
-  } catch (error) {
-    console.error(error);
-    document.getElementById("white-div").textContent = `Error: Failed to fill editors with code.`;
+      // Set JS code
+      const jsEditor = ace.edit(document.querySelector("#editor3"));
+      jsEditor.setValue(js_Code, 1);
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
+    }
   }
-}
-
 
 
   async function send_req() {
@@ -111,15 +101,19 @@ index.html:"\n${ace.edit(html_div).getValue()}"
 
 Now the user has asked: "${userInput}"
 
-Note1: Answer only if the user asked a web development related query. The answer should be in the following JSON format:
+Note1: Answer only if the user asked a web development related query. 
+The answer should be in the following JSON format:
 {
-  index_html:\`\`,
-  style_css:\`\`,
-  script_js:\`\`,
-  Comments:\`\`,
+  "index_html":"",
+  "style_css":"",
+  "script_js":"",
+  "comments":"",
 }
 
-Note 2: Answer by giving the full HTML, CSS, and JS code if code is required. Don't write 'same' when the same code is to be kept, instead, give the entire HTML, CSS, JS code every time. If code is not required, just add your answer in the comments variable.
+Note 2: If code is not required, just add your answer in the comments variable.
+Otherwise Answer by giving the full HTML, CSS, and JS code and use \\n for new lines, if code is required. 
+Don't write 'same' when the same code is to be kept, instead, give the entire HTML, CSS, JS code every time. 
+
 `;
 
   console.log(prompt);

@@ -1,7 +1,6 @@
 :root {
     --dark-grey: #282828;
     --dark: #373737;
-    --white: #ffffff;
 
     ::-webkit-scrollbar {
         height: 10px;
@@ -55,7 +54,7 @@ body {
     margin-left: 3px; /*due to button*/ 
     padding: 5px;
     border-radius: 0.5rem;
-    background-color: var(--white);
+    background-color: white;
 }
 
 #editor,
