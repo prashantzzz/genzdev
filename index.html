@@ -138,12 +138,16 @@ Note 2: If code is not required, just add your answer in the comments variable. 
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     console.log("loading"); 
     inputElement.disabled = true;
+    document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.add("fa-fade");
+    
     const result = await model.generateContent(prompt);
     const response = await result.response;
     let text = await response.text();
     console.log(text); 
+
     console.log("loaded");
     inputElement.disabled = false;
+    document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
     filleditors(text); 
   } catch (error){
     let error_text= `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
