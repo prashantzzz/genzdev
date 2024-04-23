@@ -107,6 +107,7 @@ h2 {
 }
 
 .bottom textarea {
+    
     font-family: 'Poppins', sans-serif;
     width: calc(100% - 80px); /* Adjust width to fit the button */
     height: 50%;
