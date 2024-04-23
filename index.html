@@ -57,36 +57,56 @@
   const genAI = new GoogleGenerativeAI(API_KEY);
 
   const inputElement = document.getElementById('text-input');
-  // Add event listener for enter event
+  // Add event listeners
+  document.querySelector("#editor").addEventListener('keyup', run);
   inputElement.addEventListener('keypress', function(event) {
     if (event.key === "Enter") {
       send_req();
     }
   });
 
+
+
   function filleditors(text) {
-    try {
-      const codeObj = JSON.parse(text);
-      const html_Code = codeObj.index_html || '';
-      const css_Code = codeObj.style_css || '';
-      const js_Code = codeObj.script_js || '';
+  try {
+    const codeObj = JSON.parse(text);
+    const html_Code = codeObj.index_html || '';
+    const css_Code = codeObj.style_css || '';
+    const js_Code = codeObj.script_js || '';
 
-      // Set HTML code
-      const htmlEditor = ace.edit(document.querySelector("#editor"));
-      htmlEditor.setValue(html_Code, 1); // 1: move cursor to start
+    // Set HTML code
+    const htmlEditor = ace.edit(document.querySelector("#editor"));
+    typingEffect(htmlEditor, html_Code);
 
-      // Set CSS code
-      const cssEditor = ace.edit(document.querySelector("#editor2"));
-      cssEditor.setValue(css_Code, 1);
+    // Set CSS code
+    const cssEditor = ace.edit(document.querySelector("#editor2"));
+    typingEffect(cssEditor, css_Code);
 
-      // Set JS code
-      const jsEditor = ace.edit(document.querySelector("#editor3"));
-      jsEditor.setValue(js_Code, 1);
-      run();
-    } catch (error) {
-      console.log(`Error: ${error.message}`);
+    // Set JS code
+    const jsEditor = ace.edit(document.querySelector("#editor3"));
+    typingEffect(jsEditor, js_Code);
+
+    run(); // Run the code after setting all editors
+  } catch (error) {
+    console.log(`Error: ${error.message}`);
+  }
+}
+function typingEffect(editor, code) {
+  let index = 0;
+  const delay = 5; // Adjust the delay time (in milliseconds) for typing effect
+
+  function typeCharacter() {
+    if (index < code.length) {
+      editor.session.insert(editor.getCursorPosition(), code[index]);
+      index++;
+      setTimeout(typeCharacter, delay);
     }
   }
+
+  typeCharacter(); // Start typing effect
+}
+
+
 
 
   async function send_req() {
@@ -139,5 +159,5 @@ Don't write 'same' when the same code is to be kept, instead, give the entire HT
 </script>
 
 <!-- example:
-  make website for a student portfolio form, with appropriate feilds and corresponding form validation, the css should look attractive with rounded corners and colorful buttons 
+Make website for a student portfolio form, with appropriate fields and corresponding form validation, the css should look attractive with rounded corners and colorful buttons 
 -->
