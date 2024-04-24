@@ -34,9 +34,9 @@
   <div class="bottom"> <!--added footer at the bottom-->
     <h2><i class="fa-solid fa-wand-magic-sparkles"></i> </h2>
     <textarea id="text-input"></textarea>
-
+    
     <button class="button-57" id="button-57" role="button"><span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span></button>
-
+    
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
   <script src="script1.js"></script>
@@ -57,6 +57,7 @@
   const genAI = new GoogleGenerativeAI(API_KEY);
 
   const inputElement = document.getElementById('text-input');
+
   // Add event listeners
   document.querySelector("#editor").addEventListener('keyup', run);
   inputElement.addEventListener('keypress', function(event) {
@@ -108,17 +109,21 @@ function typingEffect(editor, code) {
 
 
   async function send_req() {
-  let html_div = document.querySelector("#editor");
-  let css_div = document.querySelector("#editor2");
-  let js_div = document.querySelector("#editor3");
-  
-  let userInput = inputElement.value;
-  const prompt = `For your reference, this is the previous code:
+
+    const button = document.getElementById("button-57");
+    const spinnerIcon = '<span class="text"><i class="fa-solid fa-circle-nodes fa-spin fa-fade"></i></span><span><i class="fa-solid fa-circle-nodes fa-spin fa-fade"></i></span>'
+    const planeIcon = '<span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span>';
+
+    let html_div = document.querySelector("#editor");
+    let css_div = document.querySelector("#editor2");
+    let js_div = document.querySelector("#editor3");
+    let userInput = inputElement.value;
+    const prompt = `For your reference, this is the previous code:
 index.html:"\n${ace.edit(html_div).getValue()}"
 \nstyle.css:"\n${ace.edit(css_div).getValue()}"
 \nscript.js:"\n${ace.edit(js_div).getValue()}"  
 
-Now the user has asked: "${userInput}"
+Now the user has asked: "${userInput}. Give the full code, not partial"
 
 Note1: Answer only if the user asked a web development related query. 
 The answer should be in the following JSON format:
@@ -136,23 +141,23 @@ Note 2: If code is not required, just add your answer in the comments variable. 
   
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    console.log("loading"); 
     inputElement.disabled = true;
+    button.innerHTML = spinnerIcon;
+    button.disabled = true;
     document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.add("fa-fade");
     
     const result = await model.generateContent(prompt);
     const response = await result.response;
     let text = await response.text();
-    console.log(text); 
 
-    console.log("loaded");
     inputElement.disabled = false;
+    button.innerHTML = planeIcon;
+    button.disabled = false;
     document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
     filleditors(text); 
   } catch (error){
     let error_text= `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
     alert(error_text);
-    console.log(error_text);
   }
 }
 
