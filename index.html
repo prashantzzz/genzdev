@@ -66,7 +66,6 @@
     }
   });
 
-
   function filleditors(text) {
   try {
     const codeObj = JSON.parse(text);
@@ -88,8 +87,8 @@
 
     run(); // Run the code after setting all editors
   } catch (error) {
-    console.log(`Error: ${error.message}`);
-    alert(`Error: ${error.message}`);
+    let error_text= `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
+    alert(error_text);
   }
 }
 function typingEffect(editor, code) {
@@ -133,7 +132,6 @@ The answer should be in the following JSON format:
   "script_js":"",
   "comments":"",
 }
-
 Note 2: If code is not required, just add your answer in the comments variable. Answer by giving the full HTML CSS and JS code and use \\n for new lines. Write 'same' when the same code is to be kept. 
 `;
 
