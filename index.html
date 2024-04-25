@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,39 +9,41 @@
   <link rel="icon" href="images/logo.png" type="image/x-icon">
   <script src="https://kit.fontawesome.com/163f146714.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style1.css" />
-</head> 
+</head>
 
 <body>
   <div class="editor-container">
-    
+
     <h1><i class="fa-brands fa-html5" style="color:#FF651E"></i> HTML</h1>
-    <div id="editor" onkeyup="run()"></div> 
-    
+    <div id="editor" onkeyup="run()"></div>
+
     <h1><i class="fa-brands fa-css3-alt" style="color:#26b4f6"></i> CSS</h1>
     <div id="editor2" onkeyup="run()"></div>
-    
+
     <h1><i class="fa-brands fa-js" style="color:#F7DF1E"></i> JS</h1>
     <div id="editor3" onkeyup="run()"></div>
-  
+
   </div>
 
   <button class="separator" onclick="toggleEditorContainer()">
     <i class="fa-solid fa-angle-left" id="leftIcon"></i>
     <i class="fa-solid fa-angle-right" id="rightIcon" style="display: none;"></i>
   </button>
-  
+
   <iframe id="white-div" class="white-div"></iframe> <!-- Added white div on right-->
-  
+
   <div class="bottom"> <!--added footer at the bottom-->
     <h2><i class="fa-solid fa-wand-magic-sparkles"></i> </h2>
     <textarea id="text-input"></textarea>
-    
-    <button class="button-57" id="button-57" role="button"><span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span></button>
-    
+
+    <button class="button-57" id="button-57" role="button"><span class="text"><i
+          class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span></button>
+
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
   <script src="script1.js"></script>
 </body>
+
 </html>
 
 <script type="importmap">
@@ -50,61 +53,76 @@
     }
   }
 </script>
-<script type="module"> 
+<script type="module">
 
   import { GoogleGenerativeAI } from "@google/generative-ai";
   const API_KEY = "AIzaSyDkOS4Xjuy3F3xYdV_nXnsEU_HEhxZPmgw";
   const genAI = new GoogleGenerativeAI(API_KEY);
 
+  let htmlDiv = document.querySelector("#editor");
   const inputElement = document.getElementById('text-input');
 
   // Add event listeners
   document.querySelector("#editor").addEventListener('keyup', run);
-  inputElement.addEventListener('keypress', function(event) {
+  inputElement.addEventListener('keypress', function (event) {
     if (event.key === "Enter") {
       send_req();
     }
   });
 
   function filleditors(text) {
-  try {
-    const codeObj = JSON.parse(text);
-    const html_Code = codeObj.index_html || '';
-    const css_Code = codeObj.style_css || '';
-    const js_Code = codeObj.script_js || '';
+    try {
+      const codeObj = JSON.parse(text);
+      let html_Code = codeObj.index_html || '';
+      const css_Code = codeObj.style_css || '';
+      const js_Code = codeObj.script_js || '';
+      const commnt = codeObj.comments || '';
 
-    // Set HTML code
-    const htmlEditor = ace.edit(document.querySelector("#editor"));
-    if (!html_Code.includes("same")) typingEffect(htmlEditor, html_Code);
+      // Set HTML code
+      html_Code = html_Code.replaceAll('href="#"', 'href="#your_page"');
+      const htmlEditor = ace.edit(document.querySelector("#editor"));
+      if (!html_Code.includes("same")) typingEffect(htmlEditor, html_Code);
 
-    // Set CSS code
-    const cssEditor = ace.edit(document.querySelector("#editor2"));
-    if (!css_Code.includes("same")) typingEffect(cssEditor, css_Code);
+      // Set CSS code
+      const cssEditor = ace.edit(document.querySelector("#editor2"));
+      if (!css_Code.includes("same")) typingEffect(cssEditor, css_Code);
 
-    // Set JS code
-    const jsEditor = ace.edit(document.querySelector("#editor3"));
-    if (!js_Code.includes("same")) typingEffect(jsEditor, js_Code);
+      // Set JS code
+      const jsEditor = ace.edit(document.querySelector("#editor3"));
+      if (!js_Code.includes("same")) typingEffect(jsEditor, js_Code);
 
-    run(); // Run the code after setting all editors
-  } catch (error) {
-    let error_text= `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
-    alert(error_text);
-  }
-}
-function typingEffect(editor, code) {
-  editor.session.setValue(""); //clear contents
-  let index = 0;
-  const delay = 5; // Adjust (in ms) for typing effect
+      alert(commnt); 
 
-  function typeCharacter() {
-    if (index < code.length) {
-      editor.session.insert(editor.getCursorPosition(), code[index]);
-      index++;
-      setTimeout(typeCharacter, delay);
+      // Trigger space key press in the HTML editor div
+      const htmlDiv = document.querySelector("#editor");
+      const spaceKeyEvent = new KeyboardEvent('keypress', {
+        bubbles: true, cancelable: true, keyCode: 32, charCode: 32
+      });
+      htmlDiv.focus(); // Ensure the editor has focus
+      htmlDiv.dispatchEvent(spaceKeyEvent);
+    } catch (error) {
+      let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
+      alert(error_text);
+      inputElement.disabled = false;
+      button.innerHTML = planeIcon;
+      button.disabled = false;
+      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
     }
   }
-  typeCharacter(); // Start typing effect
-}
+  function typingEffect(editor, code) {
+    editor.session.setValue(""); //clear contents
+    let index = 0;
+    const delay = 5; // Adjust (in ms) for typing effect
+
+    function typeCharacter() {
+      if (index < code.length) {
+        editor.session.insert(editor.getCursorPosition(), code[index]);
+        index++;
+        setTimeout(typeCharacter, delay);
+      }
+    }
+    typeCharacter(); // Start typing effect
+  }
 
 
   async function send_req() {
@@ -117,51 +135,56 @@ function typingEffect(editor, code) {
     let css_div = document.querySelector("#editor2");
     let js_div = document.querySelector("#editor3");
     let userInput = inputElement.value;
-    const prompt = `For your reference, this is the previous code:
-index.html:"\n${ace.edit(html_div).getValue()}"
-\nstyle.css:"\n${ace.edit(css_div).getValue()}"
-\nscript.js:"\n${ace.edit(js_div).getValue()}"  
+// const prompt = `For your reference, this is the previous code:
+// index.html:"\n${ace.edit(html_div).getValue()}"
+// \nstyle.css:"\n${ace.edit(css_div).getValue()}"
+// \nscript.js:"\n${ace.edit(js_div).getValue()}"  
+// Write 'same' when the same code is to be kept. 
 
-Now the user has asked: "${userInput}. Give the full code, not partial"
-
-Note1: Answer only if the user asked a web development related query. 
-The answer should be in the following JSON format:
+const prompt=`"${userInput}. Apply good looking styling with a Navbar and footer as per the requirement. Give the full html, css and js code. Use \\n for new lines"
+Respond your answer strictly in the following JSON format:
 {
   "index_html":"",
   "style_css":"",
   "script_js":"",
   "comments":"",
 }
-Note 2: If code is not required, just add your answer in the comments variable. Answer by giving the full HTML CSS and JS code and use \\n for new lines. Write 'same' when the same code is to be kept. 
+Note 1: Answer only if the user asked a web development related query. 
+Note 2: If code is not required, just add your answer in the comments variable.
 `;
+    try {
+      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      inputElement.disabled = true;
+      button.innerHTML = spinnerIcon;
+      button.disabled = true;
+      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.add("fa-fade");
 
-  console.log(prompt);
-  
-  try {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    inputElement.disabled = true;
-    button.innerHTML = spinnerIcon;
-    button.disabled = true;
-    document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.add("fa-fade");
-    
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    let text = await response.text();
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      let text = await response.text();
+      text=text.replace("```json",""); text=text.replace("```html",""); text=text.replace("```css",""); 
+      text=text.replace("```js","");  text=text.replace("```","");  text=text.replaceAll("```","");
 
-    inputElement.disabled = false;
-    button.innerHTML = planeIcon;
-    button.disabled = false;
-    document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
-    filleditors(text); 
-  } catch (error){
-    let error_text= `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
-    alert(error_text);
+      inputElement.disabled = false;
+      button.innerHTML = planeIcon;
+      button.disabled = false;
+      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
+      filleditors(text);
+      console.log(text);
+    } catch (error) {
+      let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
+      alert(error_text);
+      inputElement.disabled = false;
+      button.innerHTML = planeIcon;
+      button.disabled = false;
+      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
+    }
   }
-}
 
   document.getElementById("button-57").addEventListener("click", send_req);
 </script>
 
-<!-- example:
+<!-- examples:
+  "Design a visually appealing movie listing website featuring 5 actual top-rated movies with IMDb ratings (take it from internet) and actors. Ensure intuitive navigation, search, and responsive layout. Implement modern, rounded corner div styling with suitable fonts, blue color theme, and layout to enhance user experience and aesthetics."
 Make website for a student portfolio form, with appropriate fields and corresponding form validation, the css should look attractive with rounded corners and colorful buttons 
 -->
