@@ -55,7 +55,7 @@
 </body>
 
 </html>
-
+<script src="script1.js"></script>
 <script type="importmap">
   {
     "imports": {
@@ -82,6 +82,7 @@
 
   const button = document.getElementById("button-57");
   function filleditors(text) {
+    const planeIcon = '<span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span>';
     try {
       const codeObj = JSON.parse(text);
       let html_Code = codeObj.index_html || '';
@@ -90,7 +91,6 @@
       const commnt = codeObj.comments || '';
 
       // Set HTML code
-      html_Code = html_Code.replaceAll('href="#"', 'href="#your_page"');
       const htmlEditor = ace.edit(document.querySelector("#editor"));
       if (!html_Code.includes("same")) typingEffect(htmlEditor, html_Code);
 
@@ -102,13 +102,7 @@
       const jsEditor = ace.edit(document.querySelector("#editor3"));
       if (!js_Code.includes("same")) typingEffect(jsEditor, js_Code);
 
-      // Trigger space key press in the HTML editor div
-      const htmlDiv = document.querySelector("#editor");
-      const spaceKeyEvent = new KeyboardEvent('keypress', {
-        bubbles: true, cancelable: true, keyCode: 32, charCode: 32
-      });
-      htmlDiv.focus(); // Ensure the editor has focus
-      htmlDiv.dispatchEvent(spaceKeyEvent);
+      
     } catch (error) {
       let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
       alert(error_text);
@@ -136,7 +130,6 @@
 
   async function send_req() {
 
-    
     const spinnerIcon = '<span class="text"><i class="fa-solid fa-circle-nodes fa-spin fa-fade"></i></span><span><i class="fa-solid fa-circle-nodes fa-spin fa-fade"></i></span>'
     const planeIcon = '<span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span>';
 
@@ -150,7 +143,7 @@
 // \nscript.js:"\n${ace.edit(js_div).getValue()}"  
 // Write 'same' when the same code is to be kept. 
 
-const prompt=`"${userInput}. Apply good looking styling with a Navbar and footer as per the requirement. Give the full html, css and js code. Use \\n for new lines"
+const prompt=`"Prompt is: '${userInput}'. Apply good looking colourful styling and with a Navbar and footer, use rounded corners for div elements. Give the full html, css and js code. Use \\n for new lines"
 Respond your answer strictly in the following JSON format:
 {
   "index_html":"",
@@ -173,13 +166,15 @@ Note 2: If code is not required, just add your answer in the comments variable.
       let text = await response.text();
       text=text.replace("```json",""); text=text.replace("```html",""); text=text.replace("```css",""); 
       text=text.replace("```js","");  text=text.replace("```","");  text=text.replaceAll("```","");
+      text = text.replaceAll('href="#"', 'href="#your_page"');
 
       inputElement.disabled = false;
       button.innerHTML = planeIcon;
       button.disabled = false;
       document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
       filleditors(text);
-      console.log(text);
+      run();
+      //console.log(text);
     } catch (error) {
       let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
       alert(error_text);
