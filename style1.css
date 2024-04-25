@@ -30,10 +30,19 @@
 body {
     height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: #0b1122;
-    display: flex; /* Added to make children flex items */
+    display: flex;
     align-items: stretch;
-    /* Added to stretch children to equal height */
+    background: linear-gradient(45deg, cyan, rgb(0, 87, 116), #0f1e43, rgb(0, 87, 116), cyan);
+    background-size: 400% 400%;
+    animation: moveGradient 10s infinite linear;
+}
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 .editor-container {
