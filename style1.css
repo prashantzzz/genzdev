@@ -158,7 +158,6 @@ h2 {
     transform: scale(0.92);
 }
 
-
 .button-57 {
     margin-inline: 1rem;
     margin-left: 0.3rem;
@@ -171,7 +170,7 @@ h2 {
     display: inline-block;
     font-size: 18px;
     padding: 12px; 
-    padding-right: 19px;
+    padding-right: 15px;
     text-decoration: none;
     cursor: pointer;
     background: var(--dark-grey);

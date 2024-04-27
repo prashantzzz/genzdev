@@ -100,13 +100,15 @@
                     .replaceAll('Google', 'GenZdev by Prashant')
                     .replaceAll('2023', '2024')
                     .replaceAll('2022', '2024')
-                    .replace('Copyright &copy;', '')
-                    .replace('</footer>',` Copyright &copy; GenZdev by <a href="https://www.linkedin.com/in/prashantzz/">prashantzz</a></footer>`);
+                    .replace('Copyright ©', '')
+                    .replace('id="footer">',`id="footer"> <span class="copyright1">GenZdev by <a href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span>`)
+                    .replace('</footer>',` <span class="copyright1">GenZdev by <a href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span></footer>`);
       typingEffect(htmlEditor, html_Code);
 
       // Set CSS code
       const cssEditor = ace.edit(document.querySelector("#editor2"));
       css_Code = css_Code+`
+
 /*scrollbar*/
 :root {
   --dark-grey: #282828;
@@ -128,10 +130,18 @@
   }
 }
 
-* {
-    margin: 0;
-} `;
-
+/*copyright text*/
+.copyright1{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none; /* Remove underline from links */
+}
+.copyright1 a {
+    color: #c7f0fc !important;
+}`;
       typingEffect(cssEditor, css_Code);
 
       // Set JS code
@@ -185,8 +195,7 @@
 // \nscript.js:"\n${ace.edit(js_div).getValue()}"  
 // Write 'same' when the same code is to be kept. 
 
-const prompt=`Note 1: Answer only if the prompt is a web development related query.
-Prompt is: '${userInput}'. keep a navbar and footer. Use vibrant colours of your choice, use rounded corners for div elements.
+const prompt=`code ${userInput}, with beautiful div elements. Add beautiful css styling. keep vibrant colours. keep a navbar and footer.
 Respond your answer strictly in the following JSON format:
 {
   "index_html":"",
@@ -195,7 +204,6 @@ Respond your answer strictly in the following JSON format:
   "comments":"",
 }
 Use \\n for new lines.
-Note 2: If code is not required, just add your answer in the comments variable.
 `;
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
