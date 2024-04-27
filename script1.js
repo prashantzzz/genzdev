@@ -15,7 +15,7 @@ ace.edit(html_div, {
   mode: "ace/mode/html",
 });
 
-ace.edit(js_div, {
+ace.edit(js_div, { 
   theme: "ace/theme/tomorrow_night",
   mode: "ace/mode/javascript",
 });
@@ -24,20 +24,19 @@ function toggleEditorContainer() {
   const editorContainer = document.querySelector('.editor-container');
   const leftIcon = document.getElementById('leftIcon');
   const rightIcon = document.getElementById('rightIcon');
-  
-  const whitediv = document.getElementById('white-div');
 
   if (editorContainer.style.display === 'none') {
       editorContainer.style.display = 'block';
       leftIcon.style.display = 'block';
       rightIcon.style.display = 'none';
-      whitediv.style.width = '50vw';
+      result_sc.style.width = '50vw';
   } else {
       editorContainer.style.display = 'none';
       leftIcon.style.display = 'none';
       rightIcon.style.display = 'block';
-      whitediv.style.width = '100vw';
+      result_sc.style.width = '100vw';
   }
+  run();
 }
 
 // Function to run code

@@ -47,7 +47,7 @@ body {
 
 .editor-container {
     visibility: none;
-    height: 11.3rem;
+    height: 11.5rem; 
     width: 50%; 
     color: white;
     font-size: 15px;
@@ -56,7 +56,7 @@ body {
 }
 
 #white-div {
-    height: 40rem;
+    height: 40.4rem;
     width: 50vw;
     border:none;
     margin: 9px;
@@ -96,11 +96,11 @@ h2 {
 .bottom {
     font-size: 15px;
     position: fixed; /*Change to fixed position*/
-    bottom: 10px;
+    bottom: 8px;
     left: 50%;     /*Place it horizontally centered*/
     transform: translateX(-50%); /*Center horizontally*/
     height: 8vh;
-    width: 97vw;
+    width: 99vw; 
     border-radius: 0.5rem;
     background-color: var(--dark-grey);
     display: flex;
@@ -125,7 +125,7 @@ h2 {
     padding:8px;
     outline: none;
     border-radius: 0.4rem;
-    font-size: 20px;
+    font-size: 17px; 
     resize: none;
 }
 
@@ -170,7 +170,7 @@ h2 {
     color: #ffffff;
     display: inline-block;
     font-size: 18px;
-    padding: 14px;
+    padding: 12px; 
     padding-right: 19px;
     text-decoration: none;
     cursor: pointer;
