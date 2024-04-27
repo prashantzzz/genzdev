@@ -96,6 +96,7 @@
       const htmlEditor = ace.edit(document.querySelector("#editor"));
       html_Code=html_Code.replaceAll('href="#"', 'href="your_page"'); 
       html_Code=html_Code.replaceAll('href="index.html"', 'href="your_page"');
+      html_Code=html_Code.replaceAll('Google', 'GenZdev by Prashant');
       typingEffect(htmlEditor, html_Code);
 
       // Set CSS code
@@ -153,7 +154,8 @@
 // \nscript.js:"\n${ace.edit(js_div).getValue()}"  
 // Write 'same' when the same code is to be kept. 
 
-const prompt=`"Prompt is: '${userInput}'. Apply good looking colourful styling and with a Navbar and footer, use rounded corners for div elements. Give the full html, css and js code. Use \\n for new lines"
+const prompt=`Note 1: Answer only if the prompt is a web development related query.
+Prompt is: '${userInput}'. keep a navbar and footer. Apply good looking colourful css, use rounded corners for div elements.
 Respond your answer strictly in the following JSON format:
 {
   "index_html":"",
@@ -161,7 +163,7 @@ Respond your answer strictly in the following JSON format:
   "script_js":"",
   "comments":"",
 }
-Note 1: Answer only if the user asked a web development related query. 
+Use \\n for new lines 
 Note 2: If code is not required, just add your answer in the comments variable.
 `;
     try {
