@@ -88,7 +88,7 @@
     try {
       const codeObj = JSON.parse(text);
       let html_Code = codeObj.index_html || '';
-      const css_Code = codeObj.style_css || '';
+      let css_Code = codeObj.style_css || '';
       const js_Code = codeObj.script_js || '';
       const commnt = codeObj.comments || '';
 
@@ -104,6 +104,32 @@
 
       // Set CSS code
       const cssEditor = ace.edit(document.querySelector("#editor2"));
+      css_Code = css_Code+`
+/*scrollbar*/
+:root {
+  --dark-grey: #282828;
+  --dark: #373737;
+  ::-webkit-scrollbar {
+      height: 10px;
+      width: 0.6rem;
+  }
+  ::-webkit-scrollbar-track {
+      border-radius: 0.6rem;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: grey;
+      border-radius: 0.6rem;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+      background: #c4c4c4;
+      cursor: ns-resize;
+  }
+}
+
+* {
+    margin: 0;
+} `;
+
       typingEffect(cssEditor, css_Code);
 
       // Set JS code
@@ -158,7 +184,7 @@
 // Write 'same' when the same code is to be kept. 
 
 const prompt=`Note 1: Answer only if the prompt is a web development related query.
-Prompt is: '${userInput}'. keep a navbar and footer. Use colours of your choice, use rounded corners for div elements.
+Prompt is: '${userInput}'. keep a navbar and footer. Use vibrant colours of your choice, use rounded corners for div elements.
 Respond your answer strictly in the following JSON format:
 {
   "index_html":"",
