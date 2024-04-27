@@ -99,8 +99,9 @@
                     .replaceAll('href="#', 'href="')
                     .replaceAll('Google', 'GenZdev by Prashant')
                     .replaceAll('2023', '2024')
-                    .replaceAll('2022', '2024');
-      
+                    .replaceAll('2022', '2024')
+                    .replace('Copyright &copy;', '')
+                    .replace('</footer>',` Copyright &copy; GenZdev by <a href="https://www.linkedin.com/in/prashantzz/">prashantzz</a></footer>`);
       typingEffect(htmlEditor, html_Code);
 
       // Set CSS code
@@ -193,7 +194,7 @@ Respond your answer strictly in the following JSON format:
   "script_js":"",
   "comments":"",
 }
-Use \\n for new lines 
+Use \\n for new lines.
 Note 2: If code is not required, just add your answer in the comments variable.
 `;
     try {

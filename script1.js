@@ -43,8 +43,10 @@ function toggleEditorContainer() {
 async function run() {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(() => {
-    // Storing data in Local Storage
-    localStorage.setItem('htmlCode', ace.edit(html_div).getValue());
+    let htmlstr=ace.edit(html_div).getValue();
+    htmlstr=htmlstr.replaceAll('href="#', 'href="');
+    // Storing data in Local Storage  
+    localStorage.setItem('htmlCode', htmlstr);
     localStorage.setItem('cssCode', ace.edit(css_div).getValue());
     localStorage.setItem('jsCode', ace.edit(js_div).getValue());
 
