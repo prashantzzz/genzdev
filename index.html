@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GenZdev - AI Text to Web Dev Code Generator and Editor</title>
+  <title>GenZdev | AI-powered web development companion</title>
   <meta name="description" content="GenZdev is an AI-powered web development companion that generates code from text and lets you edit it with live editor, providing a seamless experience for developers. Try our text to web dev code generator and editor today!">
   <meta name="keywords" content="GenZdev, AI text to code generator, web development, code editor, AI web development, text to code converter, AI-Powered Web Development Companion">
 
@@ -45,7 +45,7 @@
   <iframe id="white-div" class="white-div"></iframe> <!-- Added white div on right-->
 
   <div class="bottom"> <!--added footer at the bottom-->
-    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> </h2>
+    <h2><i class="fa-solid fa-wand-magic-sparkles" style="--fa-beat-fade-opacity: 0.5; --fa-beat-fade-scale: 1.075;"></i> </h2>
     <textarea id="text-input" placeholder="Enter the prompt with website details.."></textarea>
 
     <button class="button-57" id="button-57" role="button"><span class="text"><i
@@ -163,7 +163,7 @@
       button.innerHTML = planeIcon;
       button.disabled = false;
       inputElement.style.color = "#d0d0d0"; 
-      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
+      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
     }
   }
   function typingEffect(editor, code) {
@@ -214,7 +214,7 @@ Use \\n for new lines.
       button.innerHTML = spinnerIcon;
       button.disabled = true;
       inputElement.style.color = "grey";
-      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.add("fa-fade");
+      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.add("fa-beat-fade");
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
@@ -229,7 +229,7 @@ Use \\n for new lines.
       button.innerHTML = planeIcon;
       button.disabled = false;
       inputElement.style.color = "#d0d0d0";
-      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
+      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
       filleditors(text);
       
     } catch (error) {
@@ -239,7 +239,7 @@ Use \\n for new lines.
       button.innerHTML = planeIcon;
       button.disabled = false;
       inputElement.style.color = "#d0d0d0";
-      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-fade");
+      document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
     }
   }
 
