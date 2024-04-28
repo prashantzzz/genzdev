@@ -106,8 +106,8 @@ Make light blue colored website: 'My portfolio' with: 5 sample ai projects of yo
                     .replaceAll('2023', '2024')
                     .replaceAll('2022', '2024')
                     .replace('Copyright ©', '')
-                    .replace('id="footer">',`id="footer"> <span class="copyright1">GenZdev by <a href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span>`)
-                    .replace('</footer>',` <span class="copyright1">GenZdev by <a href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span></footer>`);
+                    .replace('id="footer">',`id="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;" target="_blank">prashantzz</a></span>`) 
+                    .replace('</footer>',` <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span></footer>`);
       typingEffect(htmlEditor, html_Code);
 
       // Set CSS code
@@ -253,7 +253,7 @@ Use \\n for new lines.
       // document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
     }
   }
-
+ 
   document.getElementById("button-57").addEventListener("click", send_req);
 </script>
 
