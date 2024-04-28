@@ -161,7 +161,7 @@ Make light blue colored website: 'My portfolio' with: 5 sample ai projects of yo
       error.message=error.message.replace('[GoogleGenerativeAI Error]:', '');
       error.message=error.message.replace('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent:', 'internet.');      
       let error_text = `Error: ${error.message} \nTry reloading or change the prompt`;
-      button.click()
+      button.click();
       // alert(error_text);
       // inputElement.disabled = false;
       // button.innerHTML = planeIcon;
@@ -244,7 +244,7 @@ Use \\n for new lines.
       
     } catch (error) {
       let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
-      button.click()
+      button.click();
       // alert(error_text);
       // inputElement.disabled = false;
       // button.innerHTML = planeIcon;
