@@ -1,0 +1,115 @@
+import heapq
+import random
+
+class PuzzleState:
+    def __init__(self, board, parent=None, move=""):
+        self.board = board
+        self.parent = parent
+        self.move = move
+        self.cost = 0
+        self.depth = 0
+        self.heuristic = 0
+        if parent:
+            self.depth = parent.depth + 1
+
+    def __lt__(self, other):
+        return (self.cost + self.heuristic) < (other.cost + other.heuristic)
+
+    def __eq__(self, other):
+        return self.board == other.board
+
+    def __hash__(self):
+        return hash(str(self.board))
+
+    def generate_children(self):
+        children = []
+        blank_index = self.board.index(0)
+        moves = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        for dx, dy in moves:
+            new_x, new_y = blank_index // 3 + dx, blank_index % 3 + dy
+            if 0 <= new_x < 3 and 0 <= new_y < 3:
+                new_blank_index = new_x * 3 + new_y
+                new_board = self.board[:]
+                new_board[blank_index], new_board[new_blank_index] = new_board[new_blank_index], new_board[blank_index]
+                children.append(PuzzleState(new_board, self, "UDLR"[moves.index((dx, dy))]))  # UDLR -> Up, Down, Left, Right
+        return children
+
+def h1(state):
+    return 0  # Breadth-first search heuristic
+
+def h2(state):
+    misplaced = 0
+    for i in range(9):
+        if state.board[i] != 0 and state.board[i] != i + 1:
+            misplaced += 1
+    return misplaced
+
+def h3(state):
+    total_distance = 0
+    for i in range(9):
+        if state.board[i] != 0:
+            x_goal, y_goal = (state.board[i] - 1) // 3, (state.board[i] - 1) % 3
+            x_curr, y_curr = i // 3, i % 3
+            total_distance += abs(x_goal - x_curr) + abs(y_goal - y_curr)
+    return total_distance
+
+def a_star(initial_state, heuristic):
+    open_list = []
+    closed_set = set()
+    heapq.heappush(open_list, initial_state)
+    explored_nodes = 0
+
+    while open_list:
+        current_state = heapq.heappop(open_list)
+        closed_set.add(current_state)
+        explored_nodes += 1
+
+        if current_state.board == goal_state:
+            return explored_nodes
+
+        for child in current_state.generate_children():
+            if child not in closed_set:
+                child.cost = child.depth
+                child.heuristic = heuristic(child)
+                heapq.heappush(open_list, child)
+
+    return explored_nodes
+
+def generate_random_board():
+    board = list(range(9))
+    random.shuffle(board)
+    return board
+
+if __name__ == "__main__":
+    goal_state = [1, 2, 3, 4, 5, 6, 7, 8, 0]
+    num_tests = 20
+    total_explored_h1 = 0
+    total_explored_h2 = 0
+    total_explored_h3 = 0
+
+    for _ in range(num_tests):
+        initial_board = generate_random_board()
+        initial_state = PuzzleState(initial_board)
+        node_explored_h1 = a_star(initial_state, h1)
+        node_explored_h2 = a_star(initial_state, h2)
+        node_explored_h3 = a_star(initial_state, h3)
+
+        print("21BIT0524 - Prashant")
+        print("Initial board:", initial_board)
+        print("Goal state:", goal_state)
+        print("Nodes explored for h1:", node_explored_h1)
+        print("Nodes explored for h2:", node_explored_h2)
+        print("Nodes explored for h3:", node_explored_h3)
+        print()
+
+        total_explored_h1 += node_explored_h1
+        total_explored_h2 += node_explored_h2
+        total_explored_h3 += node_explored_h3
+
+    average_explored_h1 = total_explored_h1 / num_tests
+    average_explored_h2 = total_explored_h2 / num_tests
+    average_explored_h3 = total_explored_h3 / num_tests
+
+    print("Average nodes explored for h1:", average_explored_h1)
+    print("Average nodes explored for h2:", average_explored_h2)
+    print("Average nodes explored for h3:", average_explored_h3)

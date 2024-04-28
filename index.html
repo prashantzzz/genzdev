@@ -5,7 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GenZDev</title>
+  <title>GenZdev - AI Text to Web Dev Code Generator and Editor</title>
+  <meta name="description" content="GenZdev is an AI-powered web development companion that generates code from text and lets you edit it with live editor, providing a seamless experience for developers. Try our text to web dev code generator and editor today!">
+  <meta name="keywords" content="GenZdev, AI text to code generator, web development, code editor, AI web development, text to code converter, AI-Powered Web Development Companion">
+
   <link rel="icon" href="images/logo.png" type="image/x-icon">
   <script src="https://kit.fontawesome.com/163f146714.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style1.css" />
@@ -17,7 +20,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-JLHRBC02XZ');
 </script>
 
@@ -167,7 +169,7 @@
   function typingEffect(editor, code) {
     editor.session.setValue(""); //clear contents
     let index = 0;
-    const delay = 2; // Adjust (in ms) for typing effect
+    const delay = 1; // Adjust (in ms) for typing effect
 
     function typeCharacter() {
       if (index < code.length) {
@@ -182,13 +184,14 @@
 
   async function send_req() {
 
-    const spinnerIcon = '<span class="text"><i class="fa-solid fa-circle-nodes fa-spin fa-fade"></i></span><span><i class="fa-solid fa-circle-nodes fa-spin fa-fade"></i></span>'
+    const spinnerIcon = '<span class="text"><i class="fa-solid fa-circle-nodes fa-spin" style="--fa-animation-duration: 1.2s;"></i></span><span><i class="fa-solid fa-circle-nodes fa-spin" style="--fa-animation-duration: 1.2s;"></i></span>'
     const planeIcon = '<span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span>';
 
     // let html_div = document.querySelector("#editor");
     // let css_div = document.querySelector("#editor2");
     // let js_div = document.querySelector("#editor3");
     let userInput = inputElement.value;
+    if(userInput.length<4) return;
 // const prompt = `For your reference, this is the previous code:
 // index.html:"\n${ace.edit(html_div).getValue()}"
 // \nstyle.css:"\n${ace.edit(css_div).getValue()}"
@@ -244,6 +247,7 @@ Use \\n for new lines.
 </script>
 
 <!-- examples:
+"make a good looking purple theme titled: portfolio website for Prashant with: 5 sample ai projects of your choice, 10 skills, hobby and a short bio. every div blocks showing sub elements should have rounded border with shadow."
 "make beautiful 'monuments in delhi' website in deep blue and light blue theme. each card representing a monument must be of rounded corners and should be responsive to align themselves according to screen width."
 "Design a visually appealing movie listing website featuring 5 actual top-rated movies with IMDb ratings (take it from internet) and actors. Ensure intuitive navigation, search, and responsive layout. Implement modern, rounded corner div styling with suitable fonts, blue color theme, and layout to enhance user experience and aesthetics."
 "Make website for a student portfolio form, with appropriate fields and corresponding form validation, the css should look attractive with rounded corners and colorful buttons"
