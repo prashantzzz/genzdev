@@ -153,7 +153,6 @@ h2 {
     color:black; /* Text color */
     background-color: rgba(189, 189, 189, 0.8); /* Darker background color on hover and focus */
 }
-
 .separator:active {  
     transform: scale(0.92);
 }
