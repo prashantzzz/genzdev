@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GenZdev | AI-powered WebDev Companion</title>
-  <meta name="description" content="GenZdev is an AI-powered web development companion that generates code from text and lets you edit it with live editor, providing a seamless experience for developers. Try our text to web dev code generator and editor today!">
+  <meta name="description" content="AI-powered text to website generator & web development companion that generates code from text and lets you edit it with live editor, providing a seamless experience for developers.">
   <meta name="keywords" content="GenZdev, AI text to code generator, web development, code editor, AI web development, text to code converter, AI-Powered Web Development Companion">
-
+  <link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials" >
   <link rel="icon" href="images/logo.png" type="image/x-icon">
   <script src="https://kit.fontawesome.com/163f146714.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style1.css" />
@@ -56,6 +56,20 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
   <script src="script1.js"></script>
+
+  <!-- for progressive webapp -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
+  
 </body>
 
 </html>

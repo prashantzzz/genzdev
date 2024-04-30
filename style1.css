@@ -32,7 +32,7 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: stretch;
-    background: linear-gradient(45deg, cyan, rgb(0, 87, 116), #0f1e43, rgb(0, 87, 116), cyan);
+    background: linear-gradient(45deg, cyan, #005774, #0f1e43, #005774, cyan);
     background-size: 400% 400%;
     animation: moveGradient 10s infinite linear;
 }
