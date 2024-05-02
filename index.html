@@ -112,16 +112,15 @@
 
       // Set HTML code
       const htmlEditor = ace.edit(document.querySelector("#editor"));
-      html_Code = html_Code.replaceAll('href="#"', 'href="your_page"')
-                    .replaceAll('href="index.html"', 'href="your_page"')
-                    .replaceAll('href="#', 'href="')
-                    .replaceAll('action="#','action="your_action')
-                    .replaceAll('Google', 'GenZdev by Prashant')
-                    .replaceAll('2023', '2024')
-                    .replaceAll('2022', '2024')
-                    .replace('Copyright ©', '')
-                    .replace('id="footer">',`id="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;" target="_blank">prashantzz</a></span>`) 
-                    .replace('</footer>',` <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span></footer>`);
+      html_Code = html_Code.replaceAll('href="index.html"', 'href="your_page"')
+          .replaceAll('href=""', 'href="#your_page"')
+          .replaceAll('href="#"', 'href="#your_page"')
+          .replaceAll('Google', 'GenZdev by Prashant')
+          .replaceAll('2023', '2024')
+          .replaceAll('2022', '2024')
+          .replace('Copyright ©', '')
+          .replace('id="footer">',`id="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;" target="_blank">prashantzz</a></span>`) 
+          .replace('</footer>',` <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span></footer>`);
       typingEffect(htmlEditor, html_Code);
 
       // Set CSS code
@@ -175,8 +174,12 @@
       error.message=error.message.replace('[GoogleGenerativeAI Error]:', '');
       error.message=error.message.replace('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent:', 'internet.');      
       let error_text = `Error: ${error.message} \nTry reloading or change the prompt`;
-      button.click();
-      // alert(error_text);
+      if(error_text.includes("json")) {
+        button.disabled = false;
+        button.click();
+        button.disabled = true;
+      }
+      else alert(error_text);
       // inputElement.disabled = false;
       // button.innerHTML = planeIcon;
       // button.disabled = false;
@@ -258,8 +261,12 @@ Use \\n for new lines.
       
     } catch (error) {
       let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
-      button.click();
-      // alert(error_text);
+      if(error_text.includes("json")) {
+        button.disabled = false;
+        button.click();
+        button.disabled = true;
+      }
+      else alert(error_text);
       // inputElement.disabled = false;
       // button.innerHTML = planeIcon;
       // button.disabled = false;
