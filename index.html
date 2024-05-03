@@ -174,7 +174,7 @@
       error.message=error.message.replace('[GoogleGenerativeAI Error]:', '');
       error.message=error.message.replace('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent:', 'internet.');      
       let error_text = `Error: ${error.message} \nTry reloading or change the prompt`;
-      if(error_text.includes("json")) {
+      if(error_text.includes("json") || error_text.includes("JSON")) {
         button.disabled = false;
         button.click();
         button.disabled = true;
@@ -261,7 +261,7 @@ Use \\n for new lines.
       
     } catch (error) {
       let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
-      if(error_text.includes("json")) {
+      if(error_text.includes("json") || error_text.includes("JSON")) {
         button.disabled = false;
         button.click();
         button.disabled = true;
