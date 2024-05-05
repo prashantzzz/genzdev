@@ -167,9 +167,7 @@
       const jsEditor = ace.edit(document.querySelector("#editor3"));
       typingEffect(jsEditor, js_Code);
 
-      //Direction to run the code
-      const whitediv = document.querySelector('#white-div');
-      //whitediv.srcdoc = `After the code fills up<br><h3>Click the arrow button to run.</h3>`; 
+      
       
     } catch (error) {
       error.message=error.message.replace('[GoogleGenerativeAI Error]:', '');
@@ -214,7 +212,7 @@
     // let html_div = document.querySelector("#editor");
     // let css_div = document.querySelector("#editor2");
     // let js_div = document.querySelector("#editor3");
-    let userInput = inputElement.value;
+    let userInput = inputElement.value.trim();
     if(userInput.length<4) return;
 // const prompt = `For your reference, this is the previous code:
 // index.html:"\n${ace.edit(html_div).getValue()}"
@@ -222,7 +220,7 @@
 // \nscript.js:"\n${ace.edit(js_div).getValue()}"  
 // Write 'same' when the same code is to be kept. 
 
-const prompt=`code ${userInput}, with beautiful div elements. Add beautiful css styling. keep vibrant colours. keep a navbar and footer.
+const prompt=`code ${userInput}, with beautiful div elements. Add beautiful css styling. keep a footer and sticky navbar with search bar. keep vibrant colours.
 Respond your answer strictly in the following JSON format:
 {
   "index_html":"",
@@ -230,7 +228,7 @@ Respond your answer strictly in the following JSON format:
   "script_js":"",
   "comments":"",
 }
-Respond your answer strictly in the given JSON format.
+Respond your answer strictly in the given JSON format. keep the comment short.
 Use \\n for new lines.
 `;
     try {
