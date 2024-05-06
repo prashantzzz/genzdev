@@ -257,7 +257,7 @@ Use \\n for new lines.
       sep.click();
 
     } catch (error) {
-      let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
+      let error_text = `Error: ${error.message.toLowerCase().replace(/google/g, 'GenZdev').replace(/gemini/g, 'GenZdev')} \nTry reloading or change the prompt`;
       if (error_text.includes("json") || error_text.includes("JSON")) {
         button.disabled = false;
         console.log("retrying due to json error!");
