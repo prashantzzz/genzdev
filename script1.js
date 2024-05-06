@@ -23,17 +23,17 @@ ace.edit(js_div, {
 window.onload = function() {
   // List of website prompts
   var prompts = [
-    "Make blue-white futuristic website: 'My portfolio' with: 5 sample ai projects of your choice, 10 skills, hobby and a short bio. every div block showing sub elements should have rounded border with shadow.",
-    "Make beautiful 'monuments in delhi' website in deep blue and light blue theme. each card representing a monument must be of rounded corners and should be responsive to align themselves according to screen width.",
-    "Design a visually appealing movie listing website featuring 5 actual top-rated movies with IMDb ratings (take it from internet) and actors. Ensure intuitive navigation, search, and responsive layout. Implement modern, rounded corner div styling with suitable fonts",
-    "Make a modern website for a student portfolio form, with appropriate fields and corresponding form validation, the css should look attractive with rounded corners and colorful buttons",
-    "Create an elegant e-commerce website selling 10 fashion accessories with a clean and modern design. Include features such as product categorization, user authentication, shopping cart",
-    "Develop a colourful travel blog website showcasing travel destinations, itineraries, and travel tips. Implement a user-friendly interface with interactive maps, photo galleries, and social media sharing capabilities.",
-    "Build a modern recipe sharing platform with ten recipies, allowing users to discover, share, and rate recipes. Include features such as recipe categorization, ingredient lists, cooking instructions. with css styling of rounded div and shadow",
-    "Design a modern, dynamic note taking website for organizing and saving notes. Include features such as event scheduling, adding, editing and removing notes",
-    "Develop a modern fitness tracking application enabling users to set fitness goals, track workouts, and monitor progress. Include features such as workout logging, activity tracking, and personalized recommendations."
-];
-
+    "Make blue-white futuristic website: 'My portfolio' with: a short bio, hobbies, 5 sample ai projects of your choice, 10 skills. every div block showing sub elements should have rounded border with shadow.",
+    "Make 'Monuments in Delhi' website in light blue theme. each card representing a monument must be of rounded corners and should be responsive",
+    "Design a visually appealing movie listing website featuring 5 actual top-rated movies with IMDb ratings (take it from internet) and actors. Implement modern, rounded corner div styling with suitable fonts",
+    "Make a modern website for a student portfolio form, with appropriate fields and corresponding form validation using proper js logic. the css should look attractive with rounded corners and colorful buttons",
+    "Create an elegant and modern e-commerce website, list 10 fashion accessories with price of your choice. Include features such as product wishlist, login/signup, shopping cart",
+    "Develop a light blue travel blog website showcasing travel destinations, itineraries, and travel tips. Implement a user-friendly interface with interactive maps, photo galleries, and social media sharing capabilities.",
+    "Build a light coloured modern recipe sharing platform with 10 recipes with searching functionality using js. Include features such as ingredient lists, cooking instructions. with css styling of rounded div and blue theme",
+    "Design a modern, dynamic note taking website for organizing and saving notes. Include working features such as adding, editing and removing notes by using proper js logic. Add a feature to add the notes to google calendar",
+    "Develop a dark theme modern fitness application enabling users to set fitness goals as text, and check progress in another card. Include option to mark goals as completed, and add diet recommendations by using proper js logic.",
+    "Develop a website with 5 sample python codes showing usage of different data structures of your choice. Add a button to toggle between dark and light theme, when clicked the color should invert using js DOM"
+  ];
 
   // Select a random prompt
   var randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
