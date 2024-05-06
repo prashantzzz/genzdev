@@ -32,9 +32,17 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: stretch;
-    background: linear-gradient(45deg, cyan, #005774, #0f1e43, #005774, cyan);
+    background: linear-gradient(
+        45deg,
+        cyan,
+        #005774 10%,
+        #0f1e43 30%,
+        #007a9b 50%,
+        #005774 90%,
+        cyan
+      );
     background-size: 400% 400%;
-    animation: moveGradient 10s infinite linear;
+    animation: moveGradient 15s infinite linear; /* Adjust animation timing */
 }
 @keyframes moveGradient {
     0% {
@@ -44,7 +52,6 @@ body {
         background-position: 100% 50%;
     }
 }
-
 .top {
     position: fixed;
     top: 0;
@@ -55,25 +62,38 @@ body {
     background-color: var(--dark-grey);
     display: flex;
     align-items: center;
-    z-index: 1000; /* Ensure it's above other elements */
+    z-index: 99; /* Ensure it's above other elements */
     justify-content: space-between;
 }
 
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left img {
+    width: 30px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 1rem; /* Add some space between the logo and text */
+    margin-right:0rem;
+    margin-top: 0.4rem;
+}
+
 .navbar-left h1 {
-    margin-left: 0.5rem;
-    margin-right: 1rem;
     font-size: 22px;
+    margin-left:0px;
 }
-.navbar-right{
-    margin-right:0.5rem;
+
+.navbar-right {
+    margin-right: 0.5rem;
 }
+
 .navbar-right .button-57 {
     font-size: 16px;
     margin: 1px; 
-    margin-top:2px;
-    padding:8px; 
+    margin-top: 2px;
+    padding: 8px; 
 }
-
 
 .editor-container {
     visibility: none;
