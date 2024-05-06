@@ -6,8 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GenZdev | AI-powered WebDev Companion</title>
-  <meta name="description" content="AI-powered text to website generator & web development companion that generates code from text and lets you edit it with live editor, providing a seamless experience for developers.">
-  <meta name="keywords" content="GenZdev, AI text to code generator, web development, code editor, AI web development, text to code converter, AI-Powered Web Development Companion">
+  <meta name="description"
+    content="AI-powered text to website generator & web development companion that generates code from text and lets you edit it with live editor, providing a seamless experience for developers.">
+  <meta name="keywords"
+    content="GenZdev, AI text to code generator, web development, code editor, AI web development, text to code converter, AI-Powered Web Development Companion">
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="images/logo.png" type="image/x-icon">
   <script src="https://kit.fontawesome.com/163f146714.js"></script>
@@ -18,7 +20,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLHRBC02XZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
   gtag('config', 'G-JLHRBC02XZ');
 </script>
@@ -26,14 +28,17 @@
 <body>
 
   <div class="top">
-    <div class="navbar-left"> 
-      <img src="images/logo.png" alt="GenZdev Logo"><h1>GenZdev</h1>
+    <div class="navbar-left">
+      <img src="images/logo.png" alt="GenZdev Logo">
+      <h1>GenZdev</h1>
     </div>
-    <div class="navbar-right">  
-        <button class="button-57" id="login-btn" role="button"><span class="text"><i class="fa-solid fa-sign-in-alt"></i></span><span><i class="fa-solid fa-sign-in-alt"></i></span></button>
-        <button class="button-57" id="settings-btn" role="button"><span class="text"><i class="fa-solid fa-cog"></i></span><span><i class="fa-solid fa-cog"></i></span></button>
+    <div class="navbar-right">
+      <button class="button-57" id="login-btn" role="button"><span class="text"><i
+            class="fa-solid fa-sign-in-alt"></i></span><span><i class="fa-solid fa-sign-in-alt"></i></span></button>
+      <button class="button-57" id="settings-btn" role="button"><span class="text"><i
+            class="fa-solid fa-cog"></i></span><span><i class="fa-solid fa-cog"></i></span></button>
     </div>
-</div>
+  </div>
 
 
   <div class="editor-container">
@@ -57,7 +62,8 @@
   <iframe id="white-div" class="white-div"></iframe> <!-- Added white div on right-->
 
   <div class="bottom"> <!--added footer at the bottom-->
-    <h2><i class="fa-solid fa-wand-magic-sparkles" style="--fa-beat-fade-opacity: 0.5; --fa-beat-fade-scale: 1.075;"></i> </h2>
+    <h2><i class="fa-solid fa-wand-magic-sparkles"
+        style="--fa-beat-fade-opacity: 0.5; --fa-beat-fade-scale: 1.075;"></i> </h2>
     <textarea id="text-input" placeholder="Enter the prompt with website details..">
 
 </textarea>
@@ -68,21 +74,21 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
   <script src="script1.js"></script>
-  
+
 
   <!-- for progressive webapp -->
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').then(function (registration) {
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, function(err) {
+        }, function (err) {
           console.log('ServiceWorker registration failed: ', err);
         });
       });
     }
   </script>
-  
+
 </body>
 
 </html>
@@ -113,33 +119,32 @@
     }
   });
 
-  
-  function filleditors(text) {
+
+  function filleditors(codeObj) {
     const planeIcon = '<span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span>';
-    try {
-      const codeObj = JSON.parse(text);
-      let html_Code = codeObj.index_html || '';
-      let css_Code = codeObj.style_css || '';
-      const js_Code = codeObj.script_js || '';
-      const commnt = codeObj.comments || '';
+    // const codeObj = JSON.parse(text);
+    let html_Code = codeObj.index_html || '';
+    let css_Code = codeObj.style_css || '';
+    const js_Code = codeObj.script_js || '';
+    const commnt = codeObj.comments || '';
 
-      // Set HTML code
-      const htmlEditor = ace.edit(document.querySelector("#editor"));
-      html_Code = html_Code.replaceAll('href="index.html"', 'href="your_page"')
-          .replaceAll('href=""', 'href="#your_page"')
-          .replaceAll('href="#"', 'href="#your_page"')
-          .replaceAll('Google', 'GenZdev by Prashant')
-          .replaceAll('2023', '2024')
-          .replaceAll('2022', '2024')
-          .replace('Copyright ©', '')
-          .replace('id="footer">',`id="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;" target="_blank">prashantzz</a></span>`) 
-          .replace('class="footer">',`class="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;" target="_blank">prashantzz</a></span>`) 
-          .replace('</footer>',` <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span></footer>`);
-      typingEffect(htmlEditor, html_Code);
+    // Set HTML code
+    const htmlEditor = ace.edit(document.querySelector("#editor"));
+    html_Code = html_Code.replaceAll('href="index.html"', 'href="your_page"')
+      .replaceAll('href=""', 'href="#your_page"')
+      .replaceAll('href="#"', 'href="#your_page"')
+      .replaceAll('Google', 'GenZdev by Prashant')
+      .replaceAll('2023', '2024')
+      .replaceAll('2022', '2024')
+      .replace('Copyright ©', '')
+      .replace('id="footer">', `id="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;" target="_blank">prashantzz</a></span>`)
+      .replace('class="footer">', `class="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;" target="_blank">prashantzz</a></span>`)
+      .replace('</footer>', ` <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span></footer>`);
+    typingEffect(htmlEditor, html_Code);
 
-      // Set CSS code
-      const cssEditor = ace.edit(document.querySelector("#editor2"));
-      css_Code = css_Code+`
+    // Set CSS code
+    const cssEditor = ace.edit(document.querySelector("#editor2"));
+    css_Code = css_Code + `
 
 /*scrollbar*/
 :root {
@@ -174,31 +179,11 @@
 .copyright1 a {
     color: #c7f0fc !important;
 }`;
-      typingEffect(cssEditor, css_Code);
+    typingEffect(cssEditor, css_Code);
 
-      // Set JS code
-      const jsEditor = ace.edit(document.querySelector("#editor3"));
-      typingEffect(jsEditor, js_Code);
-
-      
-      
-    } catch (error) {
-      error.message=error.message.replace('[GoogleGenerativeAI Error]:', '');
-      error.message=error.message.replace('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent:', 'internet.');      
-      let error_text = `Error: ${error.message} \nTry reloading or change the prompt`;
-      if(error_text.includes("json") || error_text.includes("JSON")) {
-        button.disabled = false;
-        button.click();
-        button.disabled = true;
-      }
-      else alert(error_text);
-      // inputElement.disabled = false;
-      // button.innerHTML = planeIcon;
-      // button.disabled = false;
-      // inputElement.style.color = "#d0d0d0"; 
-      // document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
-      
-    }
+    // Set JS code
+    const jsEditor = ace.edit(document.querySelector("#editor3"));
+    typingEffect(jsEditor, js_Code);
   }
   function typingEffect(editor, code) {
     editor.session.setValue(""); //clear contents
@@ -216,24 +201,23 @@
     // typeCharacter(); //Start typing effect
   }
 
-
   async function send_req() {
-
     const spinnerIcon = '<span class="text"><i class="fa-solid fa-circle-nodes fa-spin" style="--fa-animation-duration: 1.2s;"></i></span><span><i class="fa-solid fa-circle-nodes fa-spin" style="--fa-animation-duration: 1.2s;"></i></span>'
     const planeIcon = '<span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span>';
 
     // let html_div = document.querySelector("#editor");
     // let css_div = document.querySelector("#editor2");
     // let js_div = document.querySelector("#editor3");
+    inputElement.disabled = false;
     let userInput = inputElement.value.trim();
-    if(userInput.length<4) return;
-// const prompt = `For your reference, this is the previous code:
-// index.html:"\n${ace.edit(html_div).getValue()}"
-// \nstyle.css:"\n${ace.edit(css_div).getValue()}"
-// \nscript.js:"\n${ace.edit(js_div).getValue()}"  
-// Write 'same' when the same code is to be kept. 
+    if (userInput.length < 4) return;
+    // const prompt = `For your reference, this is the previous code:
+    // index.html:"\n${ace.edit(html_div).getValue()}"
+    // \nstyle.css:"\n${ace.edit(css_div).getValue()}"
+    // \nscript.js:"\n${ace.edit(js_div).getValue()}"  
+    // Write 'same' when the same code is to be kept. 
 
-const prompt=`code ${userInput}, with beautiful div elements. Add beautiful css styling. keep a footer and sticky navbar with search bar. keep vibrant colours.
+    const prompt = `code ${userInput}, with beautiful div elements. Add beautiful css styling. keep a footer and sticky navbar with search bar. keep vibrant colours.
 Respond your answer strictly in the following JSON format:
 {
   "index_html":"",
@@ -254,14 +238,15 @@ Use \\n for new lines.
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
-      
+
       let text = await response.text();
-      text=text.replace("```json",""); text=text.replace("```html",""); text=text.replace("```css",""); 
-      text=text.replace("```js","");  text=text.replace("```","");  text=text.replaceAll("```","");
+      text = text.replace("```json", ""); text = text.replace("```html", ""); text = text.replace("```css", "");
+      text = text.replace("```js", ""); text = text.replace("```", ""); text = text.replaceAll("```", "");
       text = text.replaceAll(`href=\"#\"`, `href=\"\"`);
 
       // console.log(text); 
-      filleditors(text);
+      const codeObj = JSON.parse(text);
+      filleditors(codeObj);
       inputElement.disabled = false;
       button.innerHTML = planeIcon;
       button.disabled = false;
@@ -270,11 +255,12 @@ Use \\n for new lines.
       const sep = document.querySelector('.separator');
       sep.click();
       sep.click();
-      
+
     } catch (error) {
       let error_text = `Error: ${error.message.replace('[GoogleGenerativeAI Error]:', '')} \nTry reloading or change the prompt`;
-      if(error_text.includes("json") || error_text.includes("JSON")) {
+      if (error_text.includes("json") || error_text.includes("JSON")) {
         button.disabled = false;
+        console.log("retrying due to json error!");
         button.click();
         button.disabled = true;
       }
@@ -286,7 +272,7 @@ Use \\n for new lines.
       // document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
     }
   }
- 
+
   document.getElementById("button-57").addEventListener("click", send_req);
 </script>
 
