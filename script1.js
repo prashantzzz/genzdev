@@ -23,16 +23,16 @@ ace.edit(js_div, {
 window.onload = function() {
   // List of website prompts
   var prompts = [
+    "Make 'Monuments in Delhi' website in light blue theme. each card representing a monument with a description (take it from internet) must be of rounded corners and should be responsive",
+    "Create an elegant and modern e-commerce website, list 4 fashion accessories (take it from internet) with price of your choice. Include features such as product wishlist, login/signup, shopping cart",
     "Make blue-white futuristic website: 'My portfolio' with: a short bio, hobbies, 5 sample ai projects of your choice, 10 skills. every div block showing sub elements should have rounded border with shadow.",
-    "Make 'Monuments in Delhi' website in light blue theme. each card representing a monument must be of rounded corners and should be responsive",
-    "Design a visually appealing movie listing website featuring 5 actual top-rated movies with IMDb ratings (take it from internet) and actors. Implement modern, rounded corner div styling with suitable fonts",
+    "Design a visually appealing movie listing website featuring 6 actual top-rated movies with IMDb ratings (take it from internet) and actors. Implement modern, rounded corner div styling with suitable fonts",
     "Make a modern website for a student portfolio form, with appropriate fields and corresponding form validation using proper js logic. the css should look attractive with rounded corners and colorful buttons",
-    "Create an elegant and modern e-commerce website, list 10 fashion accessories with price of your choice. Include features such as product wishlist, login/signup, shopping cart",
+    "Develop a website with 5 sample python codes showing usage of different data structures of your choice. Add a button to toggle between dark and light theme, when clicked the color should invert using js DOM",
     "Develop a light blue travel blog website showcasing travel destinations, itineraries, and travel tips. Implement a user-friendly interface with interactive maps, photo galleries, and social media sharing capabilities.",
-    "Build a light coloured modern recipe sharing platform with 10 recipes with searching functionality using js. Include features such as ingredient lists, cooking instructions. with css styling of rounded div and blue theme",
+    "Build a light coloured modern recipe sharing platform with 4 recipes with searching functionality using js. Include features such as ingredient lists, cooking instructions. with css styling of rounded div and blue theme",
     "Design a modern, dynamic note taking website for organizing and saving notes. Include working features such as adding, editing and removing notes by using proper js logic. Add a feature to add the notes to google calendar",
-    "Develop a dark theme modern fitness application enabling users to set fitness goals as text, and check progress in another card. Include option to mark goals as completed, and add diet recommendations by using proper js logic.",
-    "Develop a website with 5 sample python codes showing usage of different data structures of your choice. Add a button to toggle between dark and light theme, when clicked the color should invert using js DOM"
+    "Develop a dark theme modern fitness application enabling users to set fitness goals as text, and check progress in another card. Include option to mark goals as completed, and add diet recommendations by using proper js logic."
   ];
 
   // Select a random prompt
