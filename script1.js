@@ -59,7 +59,7 @@ function download() {
   // Create a download link and trigger download
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
-  link.download = 'downloaded_files.html';
+  link.download = 'GenZdev-website.html';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
