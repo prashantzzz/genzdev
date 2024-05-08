@@ -42,6 +42,29 @@ window.onload = function() {
   document.getElementById('text-input').value = randomPrompt;
 };
 
+function download() {
+  // Get HTML, CSS, and JS code from the editors
+  const htmlCode = ace.edit(html_div).getValue();
+  const cssCode = ace.edit(css_div).getValue();
+  const jsCode = ace.edit(js_div).getValue();
+
+  // Create a Blob containing the code
+  const combinedCode = `
+      ${htmlCode}
+      <style>${cssCode}</style>
+      <script>${jsCode}</script>
+  `;
+  const blob = new Blob([combinedCode], { type: 'text/html' });
+
+  // Create a download link and trigger download
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'downloaded_files.html';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 function toggleEditorContainer() {
   const editorContainer = document.querySelector('.editor-container');
   const leftIcon = document.getElementById('leftIcon');
@@ -85,6 +108,7 @@ async function run() {
 html_div.addEventListener('keyup', run);
 css_div.addEventListener('keyup', run);
 js_div.addEventListener('keyup', run);
+js_div.addEventListener('click', download);
 
 // Check if data is stored in Local Storage and populate the editors
 if(localStorage.getItem('htmlCode'))

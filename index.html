@@ -33,7 +33,7 @@
       <h1>GenZdev</h1>
     </div>
     <div class="navbar-right">
-      <button class="button-57" id="login-btn" role="button"><span class="text"><i
+      <button class="button-57" id="download-btn" role="button" onclick="download()"><span class="text"><i
             class="fa-solid fa-download"></i></span><span><i class="fa-solid fa-mobile fa-flip" style="--fa-animation-duration: 3s;"></i></span></button>
       <button class="button-57" id="settings-btn" role="button"><span class="text"><i
             class="fa-solid fa-cog"></i></span><span><i class="fa-solid fa-cog fa-spin"></i></span></button>
@@ -131,13 +131,10 @@
     // Set HTML code
     const htmlEditor = ace.edit(document.querySelector("#editor"));
     html_Code = html_Code.replaceAll('href="index.html"', 'href="your_page"')
-      .replaceAll('href=""', 'href="#your_page"')
-      .replaceAll('href="#"', 'href="#your_page"')
+      .replaceAll('href=""', 'href="#your_page"').replaceAll('href="#"', 'href="#your_page"')
       .replaceAll('Google', 'GenZdev by Prashant')
-      .replaceAll('2023', '2024')
-      .replaceAll('2022', '2024')
-      .replace('Copyright ©', '')
-      .replace(/<img\s+src="[^"]*"/g, '<img src="images/sample.png"')
+      .replaceAll('2023', '2024').replaceAll('2022', '2024').replace('Copyright ©', '')
+      .replace(/<img\s+src="[^"]*"/g, '<img src="https://github.com/prashantzzz/genzdev/blob/main/images/sample.png?raw=true"')
       .replace('id="footer">', `id="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" 
       href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;" target="_blank">prashantzz</a></span>`)
       .replace('class="footer">', `class="footer"> <span class="copyright1">GenZdev by <a onclick="window.open('https://www.linkedin.com/in/prashantzz/', '_blank'); return false;" 
