@@ -212,7 +212,10 @@
     // let js_div = document.querySelector("#editor3");
     inputElement.disabled = false;
     let userInput = inputElement.value.trim();
-    if (userInput.length < 4) return;
+    if (userInput.length < 4 || userInput.length >900) {
+      inputElement.value=userInput.replace(/\n/g, "");
+      return;
+    }
     // const prompt = `For your reference, this is the previous code:
     // index.html:"\n${ace.edit(html_div).getValue()}"
     // \nstyle.css:"\n${ace.edit(css_div).getValue()}"
