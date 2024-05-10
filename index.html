@@ -265,12 +265,15 @@ Use \\n for new lines.
         button.click();
         button.disabled = true;
       }
-      else alert(error_text);
-      // inputElement.disabled = false;
-      // button.innerHTML = planeIcon;
-      // button.disabled = false;
-      // inputElement.style.color = "#d0d0d0";
-      // document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
+      else {
+        inputElement.disabled = false;
+        button.innerHTML = planeIcon;
+        button.disabled = false;
+        inputElement.style.color = "#d0d0d0";
+        document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
+        alert(error_text);
+      }
+      
     }
   }
 
