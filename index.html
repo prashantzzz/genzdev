@@ -105,6 +105,7 @@
   import { GoogleGenerativeAI } from "@google/generative-ai";
   const API_KEY = "AIzaSyCVbdDiooeR7dc0ANEAiANH1HcM4geBA_w";
   const genAI = new GoogleGenerativeAI(API_KEY);
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
   let htmlDiv = document.querySelector("#editor");
   const inputElement = document.getElementById('text-input');
@@ -228,9 +229,8 @@ Respond your answer strictly in the following JSON format:
 }
 Respond your answer strictly in the given JSON format. keep the comment short.
 Use \\n for new lines.
-`;
+`;  
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
       inputElement.disabled = true;
       button.innerHTML = spinnerIcon;
       button.disabled = true;
