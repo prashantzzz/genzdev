@@ -28,9 +28,9 @@ window.onload = function() {
     "Make blue-white futuristic website: 'My portfolio' with: a short bio, hobbies, 5 sample ai projects of your choice, 10 skills. every div block showing sub elements should have rounded border with shadow.",
     "Design a visually appealing movie listing website featuring 6 actual top-rated movies with IMDb ratings (take it from internet) and actors. Implement modern, rounded corner div styling with suitable fonts",
     "Make a modern website for a student portfolio form, with appropriate fields and corresponding form validation using proper js logic. the css should look attractive with rounded corners and colorful buttons",
-    "Develop a website with 5 sample python codes showing usage of different data structures of your choice. Add a button to toggle between dark and light theme, when clicked the color should invert using js DOM",
+    "Develop a dark theme website with 5 amazon products of your choice, with price and description, Add a button to toggle between dark and light theme, when clicked the color should invert using js DOM",
     "Develop a light blue travel blog website showcasing travel destinations, itineraries, and travel tips. Implement a user-friendly interface with interactive maps, photo galleries, and social media sharing capabilities.",
-    "Build a light coloured modern recipe sharing platform with 4 recipes with searching functionality using js. Include features such as ingredient lists, cooking instructions. with css styling of rounded div and blue theme",
+    "make a coding platform with a sample question on the left side and a textarea to write code on the right side, add a separator between the two sides with the capability to resize the area alloted to left and right side by dragging the separator. Use js logic for the draggable separator.",
     "Design a modern, dynamic note taking website for organizing and saving notes. Include working features such as adding, editing and removing notes by using proper js logic. Add a feature to add the notes to google calendar",
     "Develop a dark theme modern fitness application enabling users to set fitness goals as text, and check progress in another card. Include option to mark goals as completed, and add diet recommendations by using proper js logic."
   ];
@@ -57,12 +57,12 @@ function download() {
   const blob = new Blob([combinedCode], { type: 'text/html' });
 
   // Create a download link and trigger download
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'GenZdev-Website.html';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const link1 = document.createElement('a');
+  link1.href = URL.createObjectURL(blob);
+  link1.download = 'GenZdev-Website.html';
+  document.body.appendChild(link1);
+  link1.click();
+  document.body.removeChild(link1);
 }
 
 function toggleEditorContainer() {
@@ -108,7 +108,6 @@ async function run() {
 html_div.addEventListener('keyup', run);
 css_div.addEventListener('keyup', run);
 js_div.addEventListener('keyup', run);
-js_div.addEventListener('click', download);
 
 // Check if data is stored in Local Storage and populate the editors
 if(localStorage.getItem('htmlCode'))
