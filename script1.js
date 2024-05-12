@@ -1,6 +1,7 @@
 let html_div = document.querySelector("#editor");
 let css_div = document.querySelector("#editor2");
 let js_div = document.querySelector("#editor3");
+const editorContainer = document.getElementById('editor-container');
 const result_sc = document.querySelector('#white-div');
 let debounceTimer;
 
@@ -66,7 +67,6 @@ function download() {
 }
 
 function toggleEditorContainer() {
-  const editorContainer = document.querySelector('.editor-container');
   const leftIcon = document.getElementById('leftIcon');
   const rightIcon = document.getElementById('rightIcon');
 
@@ -83,6 +83,20 @@ function toggleEditorContainer() {
   }
   run();
 }
+
+document.getElementById("dash").addEventListener("click", function() {
+  
+  if (js_div.style.visibility == "hidden") {
+      js_div.style.visibility = "visible"; 
+      html_div.style.height="10.5rem"; 
+      css_div.style.height="10.5rem"; 
+  } else { 
+      js_div.style.visibility = "hidden";
+      html_div.style.height="15.7rem";
+      css_div.style.height="15.7rem"; 
+  }
+});
+
 
 // Function to run code
 async function run() {
