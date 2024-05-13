@@ -135,7 +135,7 @@
     const htmlEditor = ace.edit(document.querySelector("#editor"));
     html_Code = html_Code.replaceAll('href="index.html"', 'href="your_page"')
       .replaceAll('href=""', 'href="#your_page"').replaceAll('href="#"', 'href="#your_page"').replaceAll('href="/"', 'href="#your_page"')
-      .replaceAll('action=""', 'action="#your_page"').replaceAll('action="#"', 'action="#your_page"').replaceAll('action="/"', 'action="#your_page"')
+      .replaceAll('action=""', 'action="your_page"').replaceAll('action="#"', 'action="your_page"').replaceAll('action="/"', 'action="your_page"')
       .replaceAll('Google', 'GenZdev - Prashantzz')
       .replaceAll('2023', '2024').replaceAll('2022', '2024').replace('Copyright ©', '')
       .replace(/<img\s+src="[^"]*"/g, '<img src="https://github.com/prashantzzz/genzdev/blob/main/images/sample.png?raw=true"')
