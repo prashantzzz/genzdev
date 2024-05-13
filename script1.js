@@ -115,7 +115,7 @@ async function run() {
       ${localStorage.getItem('htmlCode')}
       <script>${localStorage.getItem('jsCode')}</script>
     `;
-  }, 500); // Adjust the delay time as needed (in milliseconds)
+  }, 1000); // Adjust the delay time as needed (in milliseconds)
 }
 
 // Event listeners for input fields
