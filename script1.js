@@ -87,11 +87,13 @@ function toggleEditorContainer() {
 document.getElementById("dash").addEventListener("click", function() {
   
   if (js_div.style.visibility == "hidden") {
-      js_div.style.visibility = "visible"; 
+      js_div.style.visibility = "visible";
+      js_div.style.height = "10.5rem";  
       html_div.style.height="10.5rem"; 
       css_div.style.height="10.5rem"; 
   } else { 
       js_div.style.visibility = "hidden";
+      js_div.style.height = "0rem"; 
       html_div.style.height="15.7rem";
       css_div.style.height="15.7rem"; 
   }
