@@ -117,6 +117,11 @@ async function run() {
       ${localStorage.getItem('htmlCode')}
       <script>${localStorage.getItem('jsCode')}</script>
     `;
+    //setting title
+    var tempElement = document.createElement('div');
+    tempElement.innerHTML = htmlstr;
+    var title = tempElement.querySelector('title').innerText;
+    document.title = "GenZdev | "+title;
   }, 1000); // Adjust the delay time as needed (in milliseconds)
 }
 
