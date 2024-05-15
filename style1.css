@@ -28,6 +28,13 @@
     margin: 0;
 }
 
+@media only screen and (max-width: 600px) {
+    /* Apply styles for screens with a maximum width of 600px (phones) */
+    h5 {
+        display: none; /* Hide the h5 element on phones */
+    }
+} 
+
 body {
     height: 100vh;
     font-family: 'Poppins', sans-serif;
@@ -167,6 +174,8 @@ h2 {
     color: var(--white);
 }
 h5 { 
+    color:rgb(210, 210, 210);
+    font-weight: 50;
     padding: 6px;
     margin-left:-14px;    
     padding-inline:10px;

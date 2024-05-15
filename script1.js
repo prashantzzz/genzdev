@@ -31,7 +31,6 @@ window.onload = function() {
     "Make a modern website for a student portfolio form, with appropriate fields and corresponding form validation using proper js logic. the css should look attractive with rounded corners and colorful buttons",
     "Develop a dark theme website with 5 amazon products of your choice, with price and description, Add a button to toggle between dark and light theme, when clicked the color should invert using js DOM",
     "Develop a light blue travel blog website showcasing travel destinations, itineraries, and travel tips. Implement a user-friendly interface with interactive maps, photo galleries, and social media sharing capabilities.",
-    "make a coding platform with a sample question on the left side and a textarea to write code on the right side, add a separator between the two sides with the capability to resize the area alloted to left and right side by dragging the separator. Use js logic for the draggable separator.",
     "Design a modern, dynamic note taking website for organizing and saving notes. Include working features such as adding, editing and removing notes by using proper js logic. Add a feature to add the notes to google calendar",
     "Develop a dark theme modern fitness application enabling users to set fitness goals as text, and check progress in another card. Include option to mark goals as completed, and add diet recommendations by using proper js logic."
   ];
@@ -106,6 +105,8 @@ async function run() {
   debounceTimer = setTimeout(() => {
     let htmlstr=ace.edit(html_div).getValue();
     htmlstr=htmlstr.replaceAll('href="#', 'href="');
+    result_sc.srcdoc = `Loading Updated Preview..`;
+
     // Storing data in Local Storage  
     localStorage.setItem('htmlCode', htmlstr);
     localStorage.setItem('cssCode', ace.edit(css_div).getValue());
