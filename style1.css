@@ -1,7 +1,7 @@
 :root {
     --dark-grey: #282828;
     --dark: #373737;
-    --white:#e3e3e3;
+    --white: #e3e3e3;
 
     ::-webkit-scrollbar {
         height: 6px;
@@ -9,7 +9,7 @@
     }
 
     ::-webkit-scrollbar-track {
-        /* background: #070707; */ 
+        /* background: #070707; */
         border-radius: 0.4rem;
     }
 
@@ -29,40 +29,44 @@
 }
 
 @media only screen and (max-width: 600px) {
+
     /* Apply styles for screens with a maximum width of 600px (phones) */
     h5 {
-        display: none; /* Hide the h5 element on phones */
+        display: none;
+        /* Hide the h5 element on phones */
     }
-} 
+}
 
 body {
     height: 100vh;
     font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: stretch;
-    background: linear-gradient(
-        45deg,
-        cyan,
-        #005774 10%,
-        #0f1e43 30%,
-        #007a9b 50%,
-        #005774 90%,
-        cyan
-      );
+    background: linear-gradient(45deg,
+            cyan,
+            #005774 10%,
+            #0f1e43 30%,
+            #007a9b 50%,
+            #005774 90%,
+            cyan);
     background-size: 400% 400%;
-    animation: moveGradient 15s infinite linear; /* Adjust animation timing */
+    animation: moveGradient 15s infinite linear;
+    /* Adjust animation timing */
 }
+
 @keyframes moveGradient {
     0% {
         background-position: 0% 50%;
     }
+
     100% {
         background-position: 100% 50%;
     }
 }
+
 .top {
-    -webkit-user-select:none;
-    user-select:none;
+    -webkit-user-select: none;
+    user-select: none;
     position: fixed;
     top: 0;
     left: 50%;
@@ -72,7 +76,8 @@ body {
     background-color: var(--dark-grey);
     display: flex;
     align-items: center;
-    z-index: 99; /* Ensure it's above other elements */
+    z-index: 99;
+    /* Ensure it's above other elements */
     justify-content: space-between;
 }
 
@@ -82,16 +87,19 @@ body {
 }
 
 .navbar-left img {
-    width: 30px; /* Adjust as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-left: 1rem; /* Add some space between the logo and text */
-    margin-right:0rem;
+    width: 30px;
+    /* Adjust as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin-left: 1rem;
+    /* Add some space between the logo and text */
+    margin-right: 0rem;
     margin-top: 0.4rem;
 }
 
 .navbar-left h1 {
     font-size: 22px;
-    margin-left:0px;
+    margin-left: 0px;
 }
 
 .navbar-right {
@@ -100,19 +108,51 @@ body {
 
 .navbar-right .button-57 {
     font-size: 16px;
-    margin: 1px; 
+    margin: 1px;
     margin-top: 2px;
-    padding: 8px; 
+    padding: 8px;
 }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 15px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
+
+.popup p{
+    padding-top:12px; 
+    text-align: left;
+}
+.popup-content {
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    font-size: 1.2rem; 
+    right: 10px;
+    cursor: pointer;
+}
+
 
 .editor-container {
     visibility: none;
-     
-    width: 50%; 
+
+    width: 50%;
     color: var(--white);
     font-size: 15px;
     margin-left: 10px;
-    margin-top: 6.5vh; /* Adjust for top navbar height */
+    margin-top: 6.5vh;
+    /* Adjust for top navbar height */
     border-radius: 0.5rem;
     position: relative;
 }
@@ -125,28 +165,31 @@ body {
     margin-left: 3px;
     border-radius: 0.5rem;
     background-color: white;
-    margin-top: 7.8vh; /* Adjust for top navbar height */
+    margin-top: 7.8vh;
+    /* Adjust for top navbar height */
 }
 
-#editor{
-    height: 10.5rem;  
+#editor {
+    height: 10.5rem;
     width: 100%;
     font-size: 15px;
     color: var(--white);
     border-bottom-right-radius: inherit;
     border-bottom-left-radius: inherit;
 }
-#editor2{
-    height: 10.5rem;  
+
+#editor2 {
+    height: 10.5rem;
     width: 100%;
     font-size: 15px;
     color: var(--white);
     border-bottom-right-radius: inherit;
     border-bottom-left-radius: inherit;
 }
+
 #editor3 {
     width: 100%;
-    height: 10.5rem; 
+    height: 10.5rem;
     font-size: 15px;
     color: var(--white);
     border-bottom-right-radius: inherit;
@@ -156,14 +199,15 @@ body {
 #js-label {
     float: left;
 }
+
 #dash {
     float: right;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 h1 {
     padding: 6px;
-    padding-inline:10px;
+    padding-inline: 10px;
     margin-top: 0.5rem;
     font: 600 1rem sans-serif;
     color: var(--white);
@@ -171,34 +215,40 @@ h1 {
     border-top-right-radius: inherit;
     border-top-left-radius: inherit;
 }
+
 h2 {
     padding: 15px;
     color: var(--white);
 }
-h5 { 
-    color:rgb(210, 210, 210);
+
+h5 {
+    color: rgb(210, 210, 210);
     font-weight: 50;
     padding: 6px;
-    margin-left:-14px;    
-    padding-inline:10px;
-    margin-top: 0.8rem; 
+    margin-left: -14px;
+    padding-inline: 10px;
+    margin-top: 0.8rem;
 }
 
 .bottom {
     font-size: 15px;
-    position: fixed; /*Change to fixed position*/
+    position: fixed;
+    /*Change to fixed position*/
     bottom: 8px;
-    left: 50%;     /*Place it horizontally centered*/
-    transform: translateX(-50%); /*Center horizontally*/
+    left: 50%;
+    /*Place it horizontally centered*/
+    transform: translateX(-50%);
+    /*Center horizontally*/
     height: 8vh;
-    width: 99vw; 
+    width: 99vw;
     border-radius: 0.5rem;
     background-color: var(--dark-grey);
     display: flex;
     margin-top: 5px;
     align-items: center;
     justify-content: center;
-    z-index: 99; /* Ensure it's above other elements */
+    z-index: 99;
+    /* Ensure it's above other elements */
 }
 
 .bottom h1 {
@@ -208,12 +258,13 @@ h5 {
 
 .bottom textarea {
     font-family: 'Poppins', sans-serif;
-    width: calc(100% - 80px); /* Adjust width to fit the button */
+    width: calc(100% - 80px);
+    /* Adjust width to fit the button */
     height: 50%;
     background-color: var(--dark-grey);
     color: var(--white);
-    padding:8px;
-    padding-top:5px;
+    padding: 8px;
+    padding-top: 5px;
     outline: none;
     border-radius: 0.4rem;
     font-size: 17.5px;
@@ -227,24 +278,33 @@ h5 {
     height: 40px;
     width: 10px;
     background-color: rgba(106, 106, 106, 0.4);
-    border: none; 
-    border-radius:2px; 
+    border: none;
+    border-radius: 2px;
     outline: none;
     cursor: pointer;
     transition: background-color 0.4s, transform 0.4s;
     transition: color 0.4s, transform 0.4s;
-    color: var(--white); /* Text color */
-    margin-top: auto; /* Use auto margin to vertically center */
-    margin-bottom: auto; /* Use auto margin to vertically center */
-    display: flex; /* Use flex display */
-    align-items: center; /* Vertically center the content */
+    color: var(--white);
+    /* Text color */
+    margin-top: auto;
+    /* Use auto margin to vertically center */
+    margin-bottom: auto;
+    /* Use auto margin to vertically center */
+    display: flex;
+    /* Use flex display */
+    align-items: center;
+    /* Vertically center the content */
 }
+
 .separator:hover,
 .separator:focus {
-    color:black; /* Text color */
-    background-color: rgba(189, 189, 189, 0.8); /* Darker background color on hover and focus */
+    color: black;
+    /* Text color */
+    background-color: rgba(189, 189, 189, 0.8);
+    /* Darker background color on hover and focus */
 }
-.separator:active {  
+
+.separator:active {
     transform: scale(0.92);
 }
 
@@ -252,7 +312,7 @@ h5 {
     margin-inline: 1rem;
     margin-left: 0.3rem;
     margin-right: 0.5rem;
-    padding: 12px; 
+    padding: 12px;
     padding-right: 15px;
     border-radius: 0.4rem;
     position: relative;

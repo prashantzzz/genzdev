@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GenZdev | Text to Website</title> 
+  <title>GenZdev | Text to Website</title>
   <meta name="description"
     content="AI-powered text to website generator & web development companion that generates code from text and lets you edit it with live editor, providing a seamless experience for developers.">
   <meta name="keywords"
@@ -30,18 +30,32 @@
   <div class="top">
     <div class="navbar-left">
       <img src="images/logo.png" alt="GenZdev Logo">
-      <h1>GenZdev . </h1><h5>Text to Website Generator</h5>
-    </div> 
+      <h1>GenZdev . </h1>
+      <h5>Text to Website Generator</h5>
+    </div>
 
     <!-- navbar -->
-    <div class="navbar-right"> 
-      <button class="button-57" id="settings-btn" role="button"><span class="text"><i
-            class="fa-regular fa-lightbulb"></i></span><span><i class="fa-solid fa-lightbulb fa-flip" style="--fa-animation-duration: 4s;"></i></span></button>
-      <button class="button-57" id="download-btn" role="button" onclick="download()"><span class="text"><i  
-        class="fa-solid fa-download"></i></span><span><i class="fa-solid fa-file-code fa-flip" style="--fa-animation-duration: 4s;"></i></span></button>
-          </div>
+    <div class="navbar-right">
+      <button class="button-57" id="info-btn" role="button"><span class="text"><i
+            class="fa-regular fa-lightbulb"></i></span><span><i class="fa-solid fa-lightbulb fa-flip"
+            style="--fa-animation-duration: 4s;"></i></span></button>
+      <button class="button-57" id="download-btn" role="button" onclick="download()"><span class="text"><i
+            class="fa-solid fa-download"></i></span><span><i class="fa-solid fa-file-code fa-flip"
+            style="--fa-animation-duration: 4s;"></i></span></button>
+    </div>
   </div>
 
+  <!-- Info Popup -->
+  <div id="info-popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2><i class="fa-regular fa-lightbulb"></i> Tips for Using GenZdev</h2> 
+      <hr>
+      <p><i class="fa-solid fa-download"></i> Download the code to have a backup before requesting for a new code.</p>
+      <p><i class="fa-regular fa-paper-plane"></i> Retry sending the prompt if webpage is not up to the mark.</p>
+      <p>Checkout my other <a style="color: lightblue; text-decoration: none;" href="https://github.com/prashantzzz/">Projects <i class="fa-regular fa-share-from-square"></i></a></p>
+    </div>
+  </div>
 
   <div class="editor-container" id="editor-container">
 
@@ -53,8 +67,8 @@
 
     <h1><i class="fa-brands fa-js" style="color:#F7DF1E"></i> JS<span id="dash">__</span></h1>
     <div id="editor3" onkeyup="run()"></div>
-   
-  </div> 
+
+  </div>
 
   <button class="separator" onclick="toggleEditorContainer()">
     <i class="fa-solid fa-angle-left" id="leftIcon"></i>
@@ -71,7 +85,8 @@
 </textarea>
 
     <button class="button-57" id="button-57" role="button"><span class="text"><i
-          class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane fa-bounce"></i></span></button>
+          class="fa-regular fa-paper-plane"></i></span><span><i
+          class="fa-solid fa-paper-plane fa-bounce"></i></span></button>
 
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"></script>
@@ -150,6 +165,10 @@
     // Set CSS code
     const cssEditor = ace.edit(document.querySelector("#editor2"));
     css_Code = css_Code + `
+a {
+  color: inherit; 
+  text-decoration: none;
+}
 
 /*scrollbar*/
 :root {
@@ -215,8 +234,8 @@
     // let js_div = document.querySelector("#editor3");
     inputElement.disabled = false;
     let userInput = inputElement.value.trim();
-    if (userInput.length < 4 || userInput.length >900) {
-      inputElement.value=userInput.replace(/\n/g, "");
+    if (userInput.length < 4 || userInput.length > 900) {
+      inputElement.value = userInput.replace(/\n/g, "");
       return;
     }
     // const prompt = `For your reference, this is the previous code:
@@ -235,7 +254,7 @@ Respond your answer strictly in the following JSON format:
 }
 Respond your answer strictly in the given JSON format. keep the comment short.
 Use \\n for new lines.
-`;  
+`;
     try {
       inputElement.disabled = true;
       button.innerHTML = spinnerIcon;
@@ -279,7 +298,7 @@ Use \\n for new lines.
         document.querySelector(".fa-solid.fa-wand-magic-sparkles").classList.remove("fa-beat-fade");
         alert(error_text);
       }
-      
+
     }
   }
 

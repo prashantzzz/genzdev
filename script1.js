@@ -99,6 +99,32 @@ document.getElementById("dash").addEventListener("click", function() {
 });
 
 
+// Function to display the info popup
+function displayPopup(event) {
+  var popup = document.getElementById("info-popup");
+  popup.style.display = "block";
+  event.stopPropagation(); // Prevent click event from propagating
+}
+
+function closePopup() {
+  var popup = document.getElementById("info-popup");
+  popup.style.display = "none";
+}
+
+// Function to close the info popup when anywhere on screen is clicked outside of the popup
+function closePopupOnClickOutside(event) {
+  var popup = document.getElementById("info-popup");
+  var infoBtn = document.getElementById("info-btn");
+  if (event.target !== popup && event.target !== infoBtn) {
+    popup.style.display = "none";
+  }
+}
+
+// Event listener for clicks anywhere on the document
+document.addEventListener("click", closePopupOnClickOutside);
+document.getElementById("info-btn").addEventListener("click", displayPopup);
+
+
 // Function to run code
 async function run() {
   clearTimeout(debounceTimer);
