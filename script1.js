@@ -59,7 +59,15 @@ function download() {
   // Create a download link and trigger download
   const link1 = document.createElement('a');
   link1.href = URL.createObjectURL(blob);
-  link1.download = 'GenZdev-Website.html';
+
+  //EXTRACTING PAGE TITLE
+  let htmlstr=ace.edit(html_div).getValue(); 
+  htmlstr=htmlstr.replaceAll('href="#', 'href="');
+  var tempElement = document.createElement('div');
+  tempElement.innerHTML = htmlstr;
+  var title = tempElement.querySelector('title').innerText;
+
+  link1.download = "GenZdev-"+title.replaceAll(" ","-")+".html";
   document.body.appendChild(link1);
   link1.click();
   document.body.removeChild(link1);
@@ -97,7 +105,6 @@ document.getElementById("dash").addEventListener("click", function() {
       css_div.style.height="15.7rem"; 
   }
 });
-
 
 // Function to display the info popup
 function displayPopup(event) {

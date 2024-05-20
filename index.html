@@ -129,14 +129,13 @@
   const button = document.getElementById("button-57");
 
 
-  // // Add event listeners
+  // Add event listeners
   // document.querySelector("#editor").addEventListener('keyup', run);
   inputElement.addEventListener('keypress', function (event) {
     if (event.key === "Enter") {
       send_req();
     }
   });
-
 
   function filleditors(codeObj) {
     const planeIcon = '<span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane"></i></span>';
@@ -162,7 +161,7 @@
       href="https://www.linkedin.com/in/prashantzz/" style="color: #fff; text-decoration: none;">prashantzz</a></span></footer>`);
     typingEffect(htmlEditor, html_Code);
 
-    // Set CSS code
+    // Set CSS code 
     const cssEditor = ace.edit(document.querySelector("#editor2"));
     css_Code = css_Code + `
 a {
@@ -287,6 +286,7 @@ Use \\n for new lines.
       let error_text = `Error: ${error.message.toLowerCase().replace(/google/g, 'GenZdev').replace(/gemini/g, 'GenZdev')} \nTry reloading or change the prompt`;
       if (error_text.includes("json") || error_text.includes("JSON")) {
         button.disabled = false;
+        //console.log(text); 
         console.log("retrying due to json error!");
         button.click();
         button.disabled = true;
