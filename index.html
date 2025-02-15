@@ -120,7 +120,9 @@
 <script type="module">
 
   import { GoogleGenerativeAI } from "@google/generative-ai";
-  const API_KEY = "AIzaSyDM_3WvqsH4pXv9zbGwJKqGfsGuW8Iq2Dw";
+  const API_KEY = import.meta.env.VITE_GEMINI_API_KEY; // Fetch from environment
+
+  
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
