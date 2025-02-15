@@ -120,7 +120,7 @@
 <script type="module">
 
   import { GoogleGenerativeAI } from "@google/generative-ai";
-  const API_KEY = "AIzaSyCVbdDiooeR7dc0ANEAiANH1HcM4geBA_w";
+  const API_KEY = "AIzaSyDM_3WvqsH4pXv9zbGwJKqGfsGuW8Iq2Dw";
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
@@ -266,6 +266,7 @@ Use \\n for new lines.
       const response = await result.response;
 
       let text = await response.text();
+      console.log(text);
       text = text.replace("```json", ""); text = text.replace("```html", ""); text = text.replace("```css", "");
       text = text.replace("```js", ""); text = text.replace("```", ""); text = text.replaceAll("```", "");
       text = text.replaceAll(`href=\"#\"`, `href=\"\"`);
