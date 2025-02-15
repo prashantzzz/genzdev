@@ -121,7 +121,7 @@
 
   import { GoogleGenerativeAI } from "@google/generative-ai";
   const API_KEY = "<%= API_KEY %>";
-
+  console.log("api key: "+API_KEY)
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
@@ -266,7 +266,6 @@ Use \\n for new lines.
       const response = await result.response;
 
       let text = await response.text();
-      console.log(text);
       text = text.replace("```json", ""); text = text.replace("```html", ""); text = text.replace("```css", "");
       text = text.replace("```js", ""); text = text.replace("```", ""); text = text.replaceAll("```", "");
       text = text.replaceAll(`href=\"#\"`, `href=\"\"`);
@@ -287,7 +286,6 @@ Use \\n for new lines.
       let error_text = `Error: ${error.message.toLowerCase().replace(/google/g, 'GenZdev').replace(/gemini/g, 'GenZdev')} \nTry reloading or change the prompt`;
       if (error_text.includes("json") || error_text.includes("JSON")) {
         button.disabled = false;
-        //console.log(text); 
         console.log("retrying due to json error!");
         button.click();
         button.disabled = true;
