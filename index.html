@@ -226,6 +226,7 @@ a {
   }
 
   async function send_req() {
+    let text="";
     const spinnerIcon = '<span class="text"><i class="fa-solid fa-circle-nodes fa-spin" style="--fa-animation-duration: 1.2s;"></i></span><span><i class="fa-solid fa-circle-nodes fa-spin" style="--fa-animation-duration: 1.2s;"></i></span>'
     const planeIcon = '<span class="text"><i class="fa-regular fa-paper-plane"></i></span><span><i class="fa-solid fa-paper-plane fa-bounce"></i></span>';
 
@@ -265,7 +266,7 @@ Use \\n for new lines.
       const result = await model.generateContent(prompt);
       const response = await result.response;
 
-      let text = await response.text();
+      text = await response.text();
       text = text.replace("```json", ""); text = text.replace("```html", ""); text = text.replace("```css", "");
       text = text.replace("```js", ""); text = text.replace("```", ""); text = text.replaceAll("```", "");
       text = text.replaceAll(`href=\"#\"`, `href=\"\"`);
@@ -286,7 +287,7 @@ Use \\n for new lines.
       let error_text = `Error: ${error.message.toLowerCase().replace(/google/g, 'GenZdev').replace(/gemini/g, 'GenZdev')} \nTry reloading or change the prompt`;
       if (error_text.includes("json") || error_text.includes("JSON")) {
         button.disabled = false;
-        console.log(text); 
+        // console.log(text); 
         console.log("retrying due to json error!");
         button.click();
         button.disabled = true;
