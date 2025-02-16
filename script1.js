@@ -1,9 +1,10 @@
-let html_div = document.querySelector("#editor");
-let css_div = document.querySelector("#editor2");
-let js_div = document.querySelector("#editor3");
-const editorContainer = document.getElementById('editor-container');
-const result_sc = document.querySelector('#white-div');
-let debounceTimer;
+var html_div = document.querySelector("#editor");
+var css_div = document.querySelector("#editor2");
+var js_div = document.querySelector("#editor3");
+
+var editorContainer = document.getElementById('editor-container');
+var result_sc = document.querySelector('#white-div');
+var debounceTimer;
 
 // Initialize Ace editors
 ace.edit(css_div, {
@@ -154,8 +155,11 @@ async function run() {
     //setting title
     var tempElement = document.createElement('div');
     tempElement.innerHTML = htmlstr;
-    var title = tempElement.querySelector('title').innerText;
-    document.title = "GenZdev | "+title;
+    
+    var titleElement = tempElement.querySelector('title');
+    var title = titleElement ? titleElement.innerText : "Default Title";  
+    
+    document.title = "GenZdev | " + title;
   }, 1000); // Adjust the delay time as needed (in milliseconds)
 }
 
