@@ -25,15 +25,15 @@ ace.edit(js_div, {
 window.onload = function() {
   // List of website prompts
   var prompts = [
-    "Make 'Monuments in Delhi' website in light blue theme. each card representing a monument with a description (take it from internet) must be of rounded corners and should be responsive",
-    "Create an elegant and modern e-commerce website, list 4 fashion accessories (take it from internet) with price of your choice. Include features such as product wishlist, login/signup, shopping cart",
-    "Make blue-white futuristic website: 'My portfolio' with: a short bio, hobbies, 5 sample ai projects of your choice, 10 skills. every div block showing sub elements should have rounded border with shadow.",
-    "Design a visually appealing movie listing website featuring 6 actual top-rated movies with IMDb ratings (take it from internet) and actors. Implement modern, rounded corner div styling with suitable fonts",
-    "Make a modern website for a student portfolio form, with appropriate fields and corresponding form validation using proper js logic. the css should look attractive with rounded corners and colorful buttons",
-    "Develop a dark theme website with 5 amazon products of your choice, with price and description, Add a button to toggle between dark and light theme, when clicked the color should invert using js DOM",
-    "Develop a light blue travel blog website showcasing travel destinations, itineraries, and travel tips. Implement a user-friendly interface with interactive maps, photo galleries, and social media sharing capabilities.",
-    "Design a modern, dynamic note taking website for organizing and saving notes. Include working features such as adding, editing and removing notes by using proper js logic. Add a feature to add the notes to google calendar",
-    "Develop a dark theme modern fitness application enabling users to set fitness goals as text, and check progress in another card. Include option to mark goals as completed, and add diet recommendations by using proper js logic."
+    "Make 'Monuments in Delhi' website in light blue theme. each card representing a monument with a description (take it from internet)",
+    "Create an elegant and modern e-commerce website, list fashion accessories (take it from internet) with price of your choice. Include buttons for product wishlist, login/signup, shopping cart",
+    "Make blue-white futuristic website: 'My portfolio' with: a short bio, hobbies, 5 sample ai projects of your choice, 10 skills.",
+    "Design a visually appealing movie listing website featuring 6 actual top-rated movies with IMDb ratings (take it from internet) and actors.",
+    "Make a modern website for a student portfolio form, with appropriate fields and corresponding form validation using proper js logic.",
+    "Develop a dark theme website with 6 amazon products of your choice, with price and description",
+    "Develop a light blue travel blog website showcasing travel destinations, itineraries, and travel tips.",
+    "Design a modern, dynamic note taking website. Include working features such as adding, editing and removing notes by using proper js logic.",
+    "Develop a dark theme modern fitness application enabling users to set fitness goals as text. Include option to mark goals as completed using proper js logic."
   ];
 
   // Select a random prompt

@@ -245,7 +245,21 @@ a {
     // \nscript.js:"\n${ace.edit(js_div).getValue()}"  
     // Write 'same' when the same code is to be kept. 
 
-    const prompt = `code ${userInput}, make medium size website with logic, focusing on each section with detail. Add beautiful and colorful css styling. Keep a footer and sticky navbar with buttons.
+    const prompt = `code ${userInput}, make medium size website with logic, focusing on each section with detail.
+Requirements:
+
+  Header: Include a website title and navigation links (Home, About, Contact) placed parallel with hover styling.
+  Main Content: Design a grid layout with at least 6 rounded corner cards with 3 cards in a row. Each card must contain:
+    An image (placeholder if necessary)
+    A title for the card
+    A short description (2-3 sentences)
+    A button with hover styling.
+    Ensure that the cards are displayed responsively with apprpriate padding
+
+  Footer: Add a footer with copyright information.
+  Responsiveness: Ensure the page is mobile-friendly using CSS techniques like Flexbox or Grid to adapt to various screen sizes.
+  Styling: Use a modern colorful color scheme and fonts for better visual appeal and readability.
+
 Respond your answer strictly in the following JSON format:
 {
   "index_html":"",
@@ -253,7 +267,7 @@ Respond your answer strictly in the following JSON format:
   "script_js":"",
   "comments":"",
 }
-Respond your answer strictly in the given JSON format. keep the comment short.
+Respond your answer strictly in the given JSON format.
 Use \\n for new lines.
 `;
     try {
