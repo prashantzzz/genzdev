@@ -93,18 +93,39 @@ function toggleEditorContainer() {
 }
 
 document.getElementById("dash").addEventListener("click", function() {
+  const jsDiv = document.querySelector("#editor3");
+  const htmlDiv = document.querySelector("#editor");
+  const cssDiv = document.querySelector("#editor2");
+  const dash = document.getElementById("dash");
   
-  if (js_div.style.visibility == "hidden") {
-      js_div.style.visibility = "visible";
-      js_div.style.height = "10.5rem";  
-      html_div.style.height="10.5rem"; 
-      css_div.style.height="10.5rem"; 
-  } else { 
-      js_div.style.visibility = "hidden";
-      js_div.style.height = "0rem"; 
-      html_div.style.height="15.7rem";
-      css_div.style.height="15.7rem"; 
+  // Toggle collapsed state
+  const isCollapsed = jsDiv.style.visibility === "hidden";
+  
+  if (!isCollapsed) {
+      // Collapse JS editor
+      jsDiv.style.visibility = "hidden";
+      jsDiv.style.height = "0";
+      dash.textContent = "▼"; // Down arrow to indicate expand
+      
+      // Expand HTML and CSS editors
+      htmlDiv.style.height = "15.7rem";
+      cssDiv.style.height = "15.7rem";
+  } else {
+      // Restore all editors to default height
+      jsDiv.style.visibility = "visible";
+      jsDiv.style.height = "10.5rem";
+      dash.textContent = "__"; // Original dash symbol
+      
+      htmlDiv.style.height = "10.5rem";
+      cssDiv.style.height = "10.5rem";
   }
+  
+  // Force Ace editor resize to prevent display issues
+  setTimeout(() => {
+      ace.edit(htmlDiv).resize();
+      ace.edit(cssDiv).resize();
+      ace.edit(jsDiv).resize();
+  }, 300);
 });
 
 // Function to display the info popup

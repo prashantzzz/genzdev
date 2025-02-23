@@ -144,20 +144,20 @@ body {
     cursor: pointer;
 }
 
-
+/* Editor container styles */
 .editor-container {
-    visibility: none;
-
+    visibility: visible;
     width: 50%;
     color: var(--white);
     font-size: 15px;
     margin-left: 10px;
     margin-top: 6.5vh;
-    /* Adjust for top navbar height */
     border-radius: 0.5rem;
     position: relative;
+    transition: all 0.3s ease-in-out;
 }
 
+/* Preview window styles */
 #white-div {
     height: 38rem;
     width: 50vw;
@@ -167,34 +167,46 @@ body {
     border-radius: 0.5rem;
     background-color: white;
     margin-top: 7.8vh;
-    /* Adjust for top navbar height */
+    transition: width 0.3s ease-in-out;
 }
 
-#editor {
-    height: 10.5rem;
-    width: 100%;
-    font-size: 15px;
-    color: var(--white);
-    border-bottom-right-radius: inherit;
-    border-bottom-left-radius: inherit;
-}
-
-#editor2 {
-    height: 10.5rem;
-    width: 100%;
-    font-size: 15px;
-    color: var(--white);
-    border-bottom-right-radius: inherit;
-    border-bottom-left-radius: inherit;
-}
-
-#editor3 {
+/* Common editor styles */
+#editor, #editor2, #editor3 {
     width: 100%;
     height: 10.5rem;
     font-size: 15px;
     color: var(--white);
     border-bottom-right-radius: inherit;
     border-bottom-left-radius: inherit;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+}
+
+/* Collapsed state styles */
+#editor.collapsed, #editor2.collapsed, #editor3.collapsed {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Expanded state styles */
+#editor.expanded, #editor2.expanded, #editor3.expanded {
+    height: 15.7rem;
+}
+
+/* Header controls */
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+#editor, #editor2, #editor3 {
+    transition: height 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 #js-label {
@@ -204,6 +216,17 @@ body {
 #dash {
     float: right;
     cursor: pointer;
+    padding: 0 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+#dash:hover {
+    opacity: 0.8;
+}
+
+/* Collapse indicator rotation */
+#dash.collapsed {
+    transform: rotate(180deg);
 }
 
 h1 {
