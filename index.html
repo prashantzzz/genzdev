@@ -122,7 +122,7 @@
   import { GoogleGenerativeAI } from "@google/generative-ai";
   const prod = "AIzaSyDM_3WvqsH4pXv9zbGwJKqGfsGuW8Iq2Dw";
   const gen1AI = new GoogleGenerativeAI(prod);
-  const model = gen1AI.getGenerativeModel({ model: "gemini-pro" });
+  const model = gen1AI.getGenerativeModel({ model: "gemini-1.5-pro-002" });
 
   let htmlDiv = document.querySelector("#editor");
   const inputElement = document.getElementById('text-input');
